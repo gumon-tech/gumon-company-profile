@@ -1,11 +1,33 @@
+import Link from "next/link";
 import Reveal from "@/components/Reveal";
 
-const nodes = [
-  { k: "YCN Capital", v: "Holding Entity (Equity + Governance)" },
-  { k: "Gumon Technology", v: "Core IP / R&D / Platform Owner" },
-  { k: "Lattesoft", v: "Commercial Solutions Engine" },
-  { k: "DKS", v: "Knowledge Distribution Arm" },
-  { k: "Zenix", v: "Marketing & Growth Experiments" },
+export const metadata = {
+  title: "Ecosystem",
+  description:
+    "ภาพรวม ecosystem ของ Gumon ที่เน้นความร่วมมือที่ยุติธรรม ขอบเขตชัดเจน และการเติบโตร่วมกัน",
+};
+
+const items = [
+  {
+    title: "การต่อยอดด้วยปลั๊กอินและบริการ",
+    body:
+      "เปิดพื้นที่ให้พาร์ตเนอร์และนักพัฒนาต่อยอดได้บนแกนหลักที่มั่นคง",
+  },
+  {
+    title: "กติกาการทำงานร่วมกัน",
+    body:
+      "กติกาที่โปร่งใสช่วยให้ทุกฝ่ายทำงานร่วมกันได้อย่างเป็นธรรมและไว้ใจได้",
+  },
+  {
+    title: "แนวทางการมีส่วนร่วม",
+    body:
+      "มีแนวทางชัดเจนสำหรับโค้ด เอกสาร การทดสอบ และการออกรุ่น",
+  },
+  {
+    title: "เส้นทางสู่ตลาด",
+    body:
+      "ค่อยๆ เติบโตจากการใช้งานจริงไปสู่โอกาสเชิงธุรกิจที่พาร์ตเนอร์ขับเคลื่อนได้",
+  },
 ];
 
 export default function Page() {
@@ -13,89 +35,36 @@ export default function Page() {
     <section className="ui-section">
       <div className="ui-container">
         <Reveal>
-          <p className="ui-kicker">ECOSYSTEM MODEL</p>
-        </Reveal>
-        <Reveal delay={70}>
-          <h1 className="ui-h1">Infrastructure core. Partner-led expansion.</h1>
-        </Reveal>
-        <Reveal delay={140}>
-          <p className="mt-6 max-w-2xl ui-p">
-            Gumon governs core IP and platform integrity. Partners operate as the market-facing
-            interface, aligned through a non-intrusion boundary and strategic revenue-sharing.
+          <p className="ui-kicker">ECOSYSTEM AND GROWTH</p>
+          <h1 className="ui-h1">ทุกฝ่ายได้เติบโตไปในทิศทางเดียวกัน</h1>
+          <p className="mt-6 max-w-3xl ui-p">
+            ecosystem ของ Gumon ออกแบบให้ทำงานจริงได้ในระยะยาว
+            ครอบคลุมทั้งเทคโนโลยี การมีส่วนร่วม และโอกาสธุรกิจของพาร์ตเนอร์
           </p>
         </Reveal>
 
-        <Reveal delay={210}>
-          <div className="mt-8 partner-map glass rounded-[28px] p-6 md:p-8 shadow-glow overflow-hidden">
-            <div className="relative z-[1] flex flex-wrap gap-3">
-              <span className="partner-pill"><span className="dot" />Asia Connect</span>
-              <span className="partner-pill"><span className="dot" />AC Academys</span>
-              <span className="partner-pill"><span className="dot" />Olufy</span>
-              <span className="partner-pill"><span className="dot" />Taitam-D</span>
-            </div>
-            <div className="relative z-[1] mt-5 flex flex-wrap items-center gap-3">
-              <a className="ui-btn" href="/partners">View partner model</a>
-              <a className="ui-btn-secondary" href="/deployments">See proof of execution</a>
-            </div>
-          </div>
-        </Reveal>
-
-        <div className="mt-10 grid lg:grid-cols-12 gap-6 items-start">
-          <div className="lg:col-span-7">
-            <div className="glass rounded-xl2 p-7 shadow-glow">
-              <div className="text-xs tracking-[0.28em] uppercase text-mist">Structure</div>
-              <div className="mt-5 space-y-4">
-                {nodes.map((n) => (
-                  <div key={n.k} className="flex items-start gap-4">
-                    <div className="mt-2 h-2.5 w-2.5 rounded-full bg-accent/90 shadow-[0_0_0_4px_rgba(143,175,156,0.10)]" />
-                    <div>
-                      <div className="text-lg font-semibold">{n.k}</div>
-                      <div className="mt-1 text-sm text-mist">{n.v}</div>
-                    </div>
-                  </div>
-                ))}
+        <div className="mt-12 grid md:grid-cols-2 gap-5">
+          {items.map((item, index) => (
+            <Reveal key={item.title} delay={index * 70}>
+              <div className="card p-6 shadow-soft h-full">
+                <p className="ui-kicker">ECOSYSTEM BUILDING BLOCK</p>
+                <h2 className="mt-3 ui-h3">{item.title}</h2>
+                <p className="mt-3 text-sm md:text-base text-mist leading-relaxed">{item.body}</p>
               </div>
-              <div className="mt-6 border-t border-line pt-5 text-sm text-mist">
-                The model scales execution without diluting the core: Gumon remains the controlled
-                engineering backbone while partners scale distribution, market access, and delivery.
-              </div>
-            </div>
-          </div>
+            </Reveal>
+          ))}
+        </div>
 
-          <div className="lg:col-span-5">
-            <div className="glass rounded-xl2 p-7 shadow-glow overflow-hidden">
-              <div className="text-xs tracking-[0.28em] uppercase text-mist">Governance</div>
-              <div className="mt-3 text-xl font-semibold">Non-intrusion partner boundary</div>
-              <p className="mt-3 text-sm text-mist leading-relaxed">
-                Gumon controls core technology. Partners scale deployments. The result is OEM-grade
-                delivery with clear boundaries and sustainable collaboration.
-              </p>
-
-              <div className="mt-6 grid gap-3">
-                <div className="rounded-xl2 border border-line bg-bg1/40 p-4">
-                  <div className="text-xs tracking-[0.28em] uppercase text-mist">Core</div>
-                  <div className="mt-2 text-sm text-mist">
-                    Platform integrity, security architecture, execution quality, and core IP governance.
-                  </div>
-                </div>
-                <div className="rounded-xl2 border border-line bg-bg1/40 p-4">
-                  <div className="text-xs tracking-[0.28em] uppercase text-mist">Partner surface</div>
-                  <div className="mt-2 text-sm text-mist">
-                    Market interface, distribution, delivery context, and domain expansion—without core intrusion.
-                  </div>
-                </div>
-                <div className="rounded-xl2 border border-line bg-bg1/40 p-4">
-                  <div className="text-xs tracking-[0.28em] uppercase text-mist">Alignment</div>
-                  <div className="mt-2 text-sm text-mist">
-                    Strategic revenue-sharing and measurable delivery outcomes.
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-6 border-t border-line pt-5 text-sm text-mist">
-                Principle: <span className="text-ink font-semibold">Research → Prove → Deploy → Share</span>
-              </div>
-            </div>
+        <div className="mt-12 card p-7 shadow-soft">
+          <p className="ui-kicker">ก้าวถัดไป</p>
+          <h2 className="mt-3 ui-h2">เริ่มต่อยอดบน ecosystem ของ Gumon</h2>
+          <p className="mt-3 max-w-3xl text-sm md:text-base text-mist leading-relaxed">
+            เริ่มจากแนวทางที่กำหนดร่วมกัน เพื่อให้ทุกการต่อยอดเพิ่มคุณค่าให้แพลตฟอร์ม
+            และไม่ทำให้โครงสร้างหลักเสียสมดุล
+          </p>
+          <div className="mt-6 flex flex-col sm:flex-row gap-3">
+            <Link href="/contact" className="btn-primary">เริ่มคุยเรื่องการต่อยอด</Link>
+            <Link href="/company" className="btn-secondary">อ่านหลักการทำงานร่วมกัน</Link>
           </div>
         </div>
       </div>

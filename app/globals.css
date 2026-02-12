@@ -86,11 +86,11 @@ body{
 .ui-section{ @apply py-14 md:py-24; }
 .ui-section-tight{ @apply py-12 md:py-20; }
 
-.ui-kicker{ @apply text-[11px] tracking-[0.28em] uppercase text-mist; }
+.ui-kicker{ @apply text-[11px] tracking-[0.12em] text-mist; }
 .ui-h1{ @apply mt-4 text-4xl md:text-6xl font-semibold leading-[1.05] tracking-[-0.02em]; }
 .ui-h2{ @apply text-2xl md:text-4xl font-semibold leading-tight tracking-[-0.01em]; }
 .ui-h3{ @apply text-lg md:text-xl font-semibold leading-snug; }
-.ui-p{ @apply text-base md:text-lg text-mist leading-relaxed; }
+.ui-p{ @apply text-base md:text-lg text-ink/90 leading-relaxed; }
 .ui-small{ @apply text-[13px] text-mist leading-relaxed; }
 
 .glass{
