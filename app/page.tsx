@@ -1,158 +1,156 @@
 import Reveal from "@/components/Reveal";
 import Link from "next/link";
 
-const pillars = [
+const blocks = [
   {
-    title: "Event-Driven Microservices",
-    desc: "Systems engineered for scale, resilience, and real-world operations.",
+    title: "Open Standards",
+    desc: "A shared structural language for modular systems — predictable boundaries, repeatable patterns.",
   },
   {
-    title: "Secure Distributed Systems",
-    desc: "Encrypted data layer, key-based access control, and defense-in-depth design.",
+    title: "Reusable Foundations",
+    desc: "Core services and primitives that reduce repeated setup and integration overhead.",
   },
   {
-    title: "Offline-First Synchronization",
-    desc: "Edge + cloud hybrid deployments with robust offline recovery behavior.",
+    title: "Developer Enablement",
+    desc: "Tooling and workflows designed to make onboarding and delivery consistent across teams.",
   },
   {
-    title: "Institutional Deployment",
-    desc: "Healthcare, government, and enterprise environments where reliability matters.",
+    title: "Ecosystem Extensibility",
+    desc: "Clear extension rules so partners can build value without eroding core integrity.",
   },
 ];
 
 export default function Page() {
   return (
-    <>
-      <section className="ui-section">
-        <div className="ui-container">
-          <Reveal><p className="ui-kicker">SOVEREIGN INFRASTRUCTURE • THAILAND → GLOBAL</p></Reveal>
-          <Reveal delay={70}><h1 className="ui-h1">
-            Engineering secure digital infrastructure
+    <section className="ui-section">
+      <div className="ui-container">
+        <Reveal>
+          <p className="ui-kicker">OPEN INFRASTRUCTURE • PLATFORM FIRST • PARTNER LED</p>
+        </Reveal>
+
+        <Reveal delay={70}>
+          <h1 className="ui-h1">
+            Open software infrastructure
             <br className="hidden md:block" />
-            for institutions that cannot fail.
-          </h1></Reveal>
-          <Reveal delay={140}><p className="mt-6 max-w-2xl ui-p">
-            Gumon Technology designs and controls secure event-driven microservices systems
-            for healthcare, government, and enterprise environments—operating through a
-            partner-led ecosystem while governing core IP.
-          </p></Reveal>
+            for modular systems.
+          </h1>
+        </Reveal>
 
-          <Reveal delay={210}><div className="mt-10 flex flex-col sm:flex-row gap-3">
+        <Reveal delay={140}>
+          <p className="mt-6 max-w-2xl ui-p">
+            Gumon Technology builds open infrastructure foundations — standards, primitives, and developer tooling —
+            so teams and partners can ship modular systems with structural consistency.
+          </p>
+        </Reveal>
+
+        <Reveal delay={210}>
+          <div className="mt-10 flex flex-col sm:flex-row gap-3">
             <Link
-              href="/deployments"
-              className="glass rounded-xl2 px-5 py-3 shadow-glow hover:shadow-none transition"
+              href="/manifesto"
+              className="glass rounded-xl2 px-5 py-3 shadow-soft hover:shadow-none transition text-ink"
             >
-              Explore Deployments
+              Read the Manifesto
             </Link>
             <Link
-              href="/ecosystem"
-              className="rounded-xl2 px-5 py-3 border border-line text-mist hover:text-ink hover:border-ink/30 transition"
+              href="/architecture"
+              className="rounded-xl2 px-5 py-3 border border-line/25 text-mist hover:text-ink hover:border-ink/25 transition"
             >
-              View Ecosystem Model
+              Explore Architecture
             </Link>
-          </div></Reveal>
-
-          <div className="mt-14 grid md:grid-cols-2 gap-5">
-            {pillars.map((p) => (
-              <div key={p.title} className="glass rounded-xl2 p-6 shadow-glow">
-                <div className="text-[11px] tracking-[0.28em] uppercase text-accent">
-                  Pillar
-                </div>
-                <div className="mt-3 text-lg font-semibold">{p.title}</div>
-                <p className="mt-2 text-sm text-mist leading-relaxed">{p.desc}</p>
-              </div>
-            ))}
           </div>
+        </Reveal>
 
-          <div className="mt-14 grid lg:grid-cols-12 gap-6 items-stretch">
-            <div className="lg:col-span-7 glass rounded-xl2 p-6 shadow-glow overflow-hidden relative">
-              <div className="absolute inset-0 opacity-35">
-                <img
-                  src="/assets/selected/healthcare-cvmcra-01.png"
-                  alt="Deployment"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="relative">
-                <p className="ui-kicker">PROOF OF EXECUTION</p>
-                <h2 className="mt-3 ui-h2">Deployed in institutional environments.</h2>
-                <p className="mt-3 text-sm md:text-base text-mist leading-relaxed max-w-xl">
-                  Multi-site kiosk attendance systems, offline+online synchronization, backend mini ERP,
-                  and remote operations—built for real constraints and uptime expectations.
-                </p>
-                <Link
-                  href="/deployments"
-                  className="mt-6 inline-block text-sm text-ink underline underline-offset-4 decoration-accent hover:decoration-accent transition"
-                >
-                  See deployments →
-                </Link>
-              </div>
+        <div className="mt-14 grid md:grid-cols-2 gap-5">
+          {blocks.map((b) => (
+            <div key={b.title} className="card p-6 shadow-soft">
+              <div className="text-[11px] tracking-[0.28em] uppercase text-accent">Capability</div>
+              <div className="mt-3 text-lg font-semibold">{b.title}</div>
+              <p className="mt-2 text-sm text-mist leading-relaxed">{b.desc}</p>
             </div>
-
-            <div className="lg:col-span-5 glass rounded-xl2 p-6 shadow-glow overflow-hidden relative">
-              <div className="absolute inset-0 opacity-30">
-                <img
-                  src="/assets/selected/government-ncsa-01.png"
-                  alt="NCSA"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="relative">
-                <p className="ui-kicker">TRUST & AUTHORITY</p>
-                <h2 className="mt-3 ui-h2">Government-level engagement.</h2>
-                <p className="mt-3 text-sm md:text-base text-mist leading-relaxed">
-                  Institutional cybersecurity engagement framed as engineering research and secure
-                  architecture—built for clarity, not noise.
-                </p>
-                <Link
-                  href="/research"
-                  className="mt-6 inline-block text-sm text-ink underline underline-offset-4 decoration-accent hover:decoration-accent transition"
-                >
-                  Explore research →
-                </Link>
-              </div>
-            </div>
-          </div>
-        <div className="mt-16 glass rounded-xl2 p-7 shadow-glow overflow-hidden relative">
-  <div className="absolute inset-0 opacity-25">
-    <img
-      src="/assets/selected/ecosystem-dks-02.png"
-      alt="Texture"
-      className="w-full h-full object-cover"
-    />
-  </div>
-  <div className="relative grid lg:grid-cols-12 gap-6 items-start">
-    <div className="lg:col-span-7">
-      <p className="ui-kicker">IDENTITY</p>
-      <h2 className="mt-3 ui-h2">Serious work. Real personality.</h2>
-      <p className="mt-3 text-sm md:text-base text-mist leading-relaxed max-w-2xl">
-        We build infrastructure for environments where failure is not an option.
-        But the people behind it are sharp, direct, and relentless about execution.
-        If you know us, you know how hard we push standards—quietly.
-      </p>
-      <div className="mt-6 text-xs text-mist leading-relaxed max-w-xl">
-        The mark represents watchfulness and control—an always-on posture for secure distributed systems.
-      </div>
-    </div>
-    <div className="lg:col-span-5">
-      <div className="grid grid-cols-5 gap-3 items-center justify-items-center">
-        <img className="h-10 w-auto opacity-90" src="/assets/logo/gumon-slate.png" alt="Gumon mark slate" />
-        <img className="h-10 w-auto opacity-90" src="/assets/logo/gumon-olive.png" alt="Gumon mark olive" />
-        <img className="h-10 w-auto opacity-90" src="/assets/logo/gumon-black.png" alt="Gumon mark black" />
-        <img className="h-10 w-auto opacity-90" src="/assets/logo/gumon-rose.png" alt="Gumon mark rose" />
-        <div className="rounded-lg border border-line bg-bg1 p-2">
-          <img className="h-10 w-auto" src="/assets/logo/gumon-white.png" alt="Gumon mark white" />
+          ))}
         </div>
-      </div>
-      <div className="mt-5 text-xs text-mist leading-relaxed">
-        Color variants are used as context signals (not decoration): institutional, field, and research modes.
-      </div>
-    </div>
-  </div>
-</div>
 
-</div>
-      </section>
-    </>
+        <div className="mt-14 grid lg:grid-cols-12 gap-6 items-stretch">
+          <div className="lg:col-span-7 card p-6 shadow-soft overflow-hidden relative">
+            <div className="relative">
+              <p className="ui-kicker">PLATFORM DISCIPLINE</p>
+              <h2 className="mt-3 ui-h2">Governance and boundaries are part of the product.</h2>
+              <p className="mt-3 text-sm md:text-base text-mist leading-relaxed max-w-xl">
+                Open platforms fail when boundaries blur. Gumon enforces core vs extension separation,
+                version discipline, and partner-first execution rules to keep ecosystems stable over time.
+              </p>
+              <Link
+                href="/governance"
+                className="mt-6 inline-block text-sm text-ink underline underline-offset-4 decoration-accent hover:decoration-accent transition"
+              >
+                Read governance charter →
+              </Link>
+            </div>
+          </div>
+
+          <div className="lg:col-span-5 card p-6 shadow-soft overflow-hidden relative">
+            <div className="relative">
+              <p className="ui-kicker">DOCUMENTATION AS INFRASTRUCTURE</p>
+              <h2 className="mt-3 ui-h2">Clarity scales adoption.</h2>
+              <p className="mt-3 text-sm md:text-base text-mist leading-relaxed">
+                Documentation, onboarding, and compatibility declarations are treated as structural assets —
+                not afterthoughts. If teams cannot start consistently, the platform cannot scale.
+              </p>
+              <Link
+                href="/docs"
+                className="mt-6 inline-block text-sm text-ink underline underline-offset-4 decoration-accent hover:decoration-accent transition"
+              >
+                Go to docs →
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-16 card p-7 shadow-soft">
+          <div className="grid lg:grid-cols-12 gap-6 items-start">
+            <div className="lg:col-span-7">
+              <p className="ui-kicker">ECOSYSTEM MODEL</p>
+              <h2 className="mt-3 ui-h2">Platform builder. Partner-led execution.</h2>
+              <p className="mt-3 text-sm md:text-base text-mist leading-relaxed max-w-2xl">
+                Gumon builds the foundation. Partners build solutions and deliver value. This separation protects
+                ecosystem trust and prevents platform drift into downstream competition.
+              </p>
+              <div className="mt-6 flex flex-col sm:flex-row gap-3">
+                <Link
+                  href="/ecosystem"
+                  className="glass rounded-xl2 px-5 py-3 shadow-soft hover:shadow-none transition text-ink"
+                >
+                  Explore Ecosystem
+                </Link>
+                <Link
+                  href="/partners"
+                  className="rounded-xl2 px-5 py-3 border border-line/25 text-mist hover:text-ink hover:border-ink/25 transition"
+                >
+                  Partner with Gumon
+                </Link>
+              </div>
+            </div>
+
+            <div className="lg:col-span-5">
+              <div className="text-[11px] tracking-[0.28em] uppercase text-mist">Quick start (illustrative)</div>
+              <pre className="mt-3 codeblock">
+{`# install gumon tooling
+npm i -g gumon-cli
+
+# initialize a structured workspace
+gumon init my-system
+
+# add a service module
+gumon add service auth`}
+              </pre>
+              <div className="mt-3 ui-small">
+                Examples shown for illustration. Implementation details live in documentation.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
   );
 }

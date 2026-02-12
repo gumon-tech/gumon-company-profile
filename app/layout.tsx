@@ -8,28 +8,28 @@ import NavLink from "@/components/NavLink";
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://web.gumon.dev"),
   title: {
-    default: "Gumon Technology — Secure Digital Infrastructure",
+    default: "Gumon Technology — Open Infrastructure Platform",
     template: "%s — Gumon Technology",
   },
   description:
-    "Engineering secure event-driven microservices systems for institutional environments across healthcare, government, and enterprise.",
+    "Open software infrastructure for modular systems — platform standards, reusable foundations, and partner-led ecosystems.",
   openGraph: {
     type: "website",
-    title: "Gumon Technology — Secure Digital Infrastructure",
+    title: "Gumon Technology — Open Infrastructure Platform",
     description:
-      "Engineering secure event-driven microservices systems for institutional environments across healthcare, government, and enterprise.",
+      "Open software infrastructure for modular systems — platform standards, reusable foundations, and partner-led ecosystems.",
     url: "/",
   },
 };
 
 const nav = [
-  { href: "/", label: "Overview" },
-  { href: "/deployments", label: "Deployments" },
+  { href: "/", label: "Platform" },
+  { href: "/architecture", label: "Architecture" },
+  { href: "/governance", label: "Governance" },
   { href: "/ecosystem", label: "Ecosystem" },
   { href: "/research", label: "Research" },
+  { href: "/docs", label: "Docs" },
   { href: "/partners", label: "Partners" },
-  { href: "/brand", label: "Brand" },
-  { href: "/contact", label: "Contact" },
 ];
 
 export default function RootLayout({
@@ -44,18 +44,18 @@ export default function RootLayout({
         <div className="bg-veil" />
         <div className="grid-overlay" />
 
-        <header className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-bg0/55 border-b border-line">
+        <header className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-bg0/55 border-b border-line/20">
           <div className="ui-container h-16 flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3">
               <span className="logo-swap" aria-label="Gumon mark">
-  <img src="/assets/logo/gumon-white.png" alt="Gumon" className="logo-inst" />
-  <img src="/assets/logo/gumon-slate.png" alt="Gumon" className="logo-field" />
-  <img src="/assets/logo/gumon-olive.png" alt="Gumon" className="logo-lab" />
-</span>
+                <img src="/assets/logo/gumon-white.png" alt="Gumon" className="logo-inst" />
+                <img src="/assets/logo/gumon-slate.png" alt="Gumon" className="logo-field" />
+                <img src="/assets/logo/gumon-olive.png" alt="Gumon" className="logo-lab" />
+              </span>
               <div className="leading-tight">
                 <div className="text-sm font-semibold">Gumon Technology</div>
                 <div className="text-[11px] tracking-[0.22em] uppercase text-mist">
-                  Secure Infrastructure
+                  Open Infrastructure Platform
                 </div>
               </div>
             </Link>
@@ -68,29 +68,27 @@ export default function RootLayout({
             </nav>
 
             <Link
-              href="/contact"
-              className="glass rounded-full px-4 py-2 text-sm shadow-glow hover:shadow-none transition"
+              href="/manifesto"
+              className="glass rounded-full px-4 py-2 text-sm shadow-soft hover:shadow-none transition"
             >
-              Institutional Inquiry
+              Read Manifesto
             </Link>
           </div>
         </header>
 
         <main>{children}</main>
 
-        <footer className="border-t border-line">
-          <div className="ui-container py-10 text-sm text-mist flex flex-col md:flex-row gap-2 md:items-center md:justify-between">
+        <footer className="border-t border-line/20">
+          <div className="ui-container py-10 text-sm text-mist flex flex-col md:flex-row gap-3 md:items-center md:justify-between">
             <div>© {new Date().getFullYear()} Gumon Technology.</div>
-            <div className="flex items-center gap-3">
-  <span className="relative h-6 w-6">
-  <img src="/assets/logo/gumon-white.png" alt="Gumon" className="logo-inst h-6 w-6" />
-  <img src="/assets/logo/gumon-slate.png" alt="Gumon" className="logo-field h-6 w-6" />
-  <img src="/assets/logo/gumon-olive.png" alt="Gumon" className="logo-lab h-6 w-6" />
-</span>
-  <div className="text-[11px] tracking-[0.22em] uppercase">
-    Research → Prove → Deploy → Share
-  </div>
-</div>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+              <Link className="hover:text-ink transition" href="/manifesto">Manifesto</Link>
+              <Link className="hover:text-ink transition" href="/architecture">Architecture</Link>
+              <Link className="hover:text-ink transition" href="/governance">Governance</Link>
+              <Link className="hover:text-ink transition" href="/deployments">Deployments</Link>
+              <Link className="hover:text-ink transition" href="/brand">Brand</Link>
+              <Link className="hover:text-ink transition" href="/contact">Contact</Link>
+            </div>
           </div>
         </footer>
       </body>
