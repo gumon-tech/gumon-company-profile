@@ -19,3 +19,7 @@ npm run build
 ## GitHub Pages
 1) Repo Settings → Pages → Source: GitHub Actions
 2) Ensure CNAME is set (file `public/CNAME` already)
+
+## Logo variants
+- `public/assets/logo/gumon-mark.png` (primary, white)
+- `public/assets/logo/gumon-slate.png`, `gumon-olive.png`, `gumon-black.png`, `gumon-rose.png`, `gumon-white.png`

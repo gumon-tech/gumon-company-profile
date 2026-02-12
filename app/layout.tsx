@@ -80,9 +80,12 @@ export default function RootLayout({
         <footer className="border-t border-line">
           <div className="ui-container py-10 text-sm text-mist flex flex-col md:flex-row gap-2 md:items-center md:justify-between">
             <div>© {new Date().getFullYear()} Gumon Technology.</div>
-            <div className="text-[11px] tracking-[0.22em] uppercase">
-              Research → Prove → Deploy → Share
-            </div>
+            <div className="flex items-center gap-3">
+  <img src="/assets/logo/gumon-mark.png" alt="Gumon mark" className="h-6 w-6 opacity-80" />
+  <div className="text-[11px] tracking-[0.22em] uppercase">
+    Research → Prove → Deploy → Share
+  </div>
+</div>
           </div>
         </footer>
       </body>

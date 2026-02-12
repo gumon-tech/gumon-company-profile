@@ -112,7 +112,45 @@ export default function Page() {
               </div>
             </div>
           </div>
+        <div className="mt-16 glass rounded-xl2 p-7 shadow-glow overflow-hidden relative">
+  <div className="absolute inset-0 opacity-25">
+    <img
+      src="/assets/selected/ecosystem-dks-02.png"
+      alt="Texture"
+      className="w-full h-full object-cover"
+    />
+  </div>
+  <div className="relative grid lg:grid-cols-12 gap-6 items-start">
+    <div className="lg:col-span-7">
+      <p className="ui-kicker">IDENTITY</p>
+      <h2 className="mt-3 ui-h2">Serious work. Real personality.</h2>
+      <p className="mt-3 text-sm md:text-base text-mist leading-relaxed max-w-2xl">
+        We build infrastructure for environments where failure is not an option.
+        But the people behind it are sharp, direct, and relentless about execution.
+        If you know us, you know how hard we push standards—quietly.
+      </p>
+      <div className="mt-6 text-xs text-mist leading-relaxed max-w-xl">
+        The mark represents watchfulness and control—an always-on posture for secure distributed systems.
+      </div>
+    </div>
+    <div className="lg:col-span-5">
+      <div className="grid grid-cols-5 gap-3 items-center justify-items-center">
+        <img className="h-10 w-auto opacity-90" src="/assets/logo/gumon-slate.png" alt="Gumon mark slate" />
+        <img className="h-10 w-auto opacity-90" src="/assets/logo/gumon-olive.png" alt="Gumon mark olive" />
+        <img className="h-10 w-auto opacity-90" src="/assets/logo/gumon-black.png" alt="Gumon mark black" />
+        <img className="h-10 w-auto opacity-90" src="/assets/logo/gumon-rose.png" alt="Gumon mark rose" />
+        <div className="rounded-lg border border-line bg-bg1 p-2">
+          <img className="h-10 w-auto" src="/assets/logo/gumon-white.png" alt="Gumon mark white" />
         </div>
+      </div>
+      <div className="mt-5 text-xs text-mist leading-relaxed">
+        Color variants are used as context signals (not decoration): institutional, field, and research modes.
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
       </section>
     </>
   );
