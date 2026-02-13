@@ -22,6 +22,13 @@ npm run check:ia
 ```
 ตรวจว่าหน้า active ไม่มีลิงก์ภายในย้อนกลับไปหน้า legacy routes
 
+## Contact webhook (optional)
+ตั้งค่า env สำหรับส่งฟอร์มติดต่อเข้า webhook:
+```bash
+NEXT_PUBLIC_CONTACT_WEBHOOK_URL=https://your-webhook-endpoint
+```
+ถ้าไม่ตั้งค่า หรือ webhook ล้มเหลว ระบบจะ fallback ไป `mailto:contact@gumon.io`
+
 ## Current IA
 - `/`
 - `/platform`

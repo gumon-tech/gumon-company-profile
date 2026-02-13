@@ -44,6 +44,8 @@ Source:
 | `contact_docs_click` | `docs` | Contact page docs links | Pre-sales technical qualification |
 | `contact_channel_click` | `contact` | Contact page direct channels | Direct conversion intent |
 | `contact_form_submit` | `contact` | Contact form submit | High-intent lead submission |
+| `contact_form_submit_success` | `contact` | Webhook submit success | Confirmed lead capture to webhook |
+| `contact_form_submit_fallback_mailto` | `contact` | Webhook fail -> mailto fallback | Lead continuity when webhook unavailable |
 
 ## KPI Dashboard Spec
 - Role-path CTR:
@@ -54,3 +56,5 @@ Source:
   - (`header_cta_click` + `home_nextstep_click[nextstep-contact]` + `platform_nextstep_click[platform-to-contact]` + `developers_contact_click` + `partners_contact_click` + `contact_channel_click` + `contact_form_submit`) / relevant sessions
 - Form Submission Rate:
   - `contact_form_submit / contact sessions`
+- Webhook Success Rate:
+  - `contact_form_submit_success / contact_form_submit`

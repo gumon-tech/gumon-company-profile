@@ -55,10 +55,13 @@ KPI:
   - `contact_docs_click`
   - `contact_channel_click`
   - `contact_form_submit`
+  - `contact_form_submit_success`
+  - `contact_form_submit_fallback_mailto`
 
 KPIs:
 - `Direct Contact Intent = contact_channel_click / contact sessions`
 - `Form Submission Rate = contact_form_submit / contact sessions`
+- `Webhook Success Rate = contact_form_submit_success / contact_form_submit`
 
 ## BigQuery Query Template
 ```sql
@@ -91,7 +94,9 @@ WHERE event_name IN (
   'contact_route_click',
   'contact_docs_click',
   'contact_channel_click',
-  'contact_form_submit'
+  'contact_form_submit',
+  'contact_form_submit_success',
+  'contact_form_submit_fallback_mailto'
 )
 GROUP BY event_date, event_name, event_label, event_location
 ORDER BY event_date DESC, event_count DESC;
