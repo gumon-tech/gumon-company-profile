@@ -5,7 +5,7 @@ import { buildPageMetadata } from "@/lib/seo";
 export const metadata = buildPageMetadata({
   title: "FAQ",
   description:
-    "คำถามที่พบบ่อยเกี่ยวกับ Gumon สำหรับนักพัฒนา พาร์ตเนอร์ และผู้ลงทุน",
+    "คำถามที่พบบ่อยเกี่ยวกับการใช้งาน Gumon สำหรับทีมพัฒนา พาร์ตเนอร์ และผู้บริหาร",
   path: "/faq",
 });
 
@@ -15,11 +15,11 @@ const faqGroups = [
     items: [
       {
         q: "ควรเริ่มจากเอกสารไหนก่อน",
-        a: "เริ่มจาก Developer Documentation เพื่อดู quick start และ reference พื้นฐาน แล้วเสริมบริบทการใช้งานจาก Knowledge Base",
+        a: "เริ่มจาก Developer Documentation แล้วต่อด้วย Knowledge Base เพื่อดูแนวทางปฏิบัติที่ใช้ในงานจริง",
       },
       {
-        q: "ต้องใช้ Gumon CLI ทุกโปรเจกต์หรือไม่",
-        a: "ไม่บังคับ แต่แนะนำอย่างยิ่งสำหรับทีมที่ต้องการมาตรฐานการตั้งค่าและ onboarding ที่เร็วขึ้น",
+        q: "ทีมที่มีระบบเดิมอยู่แล้วเริ่มยังไง",
+        a: "เริ่มจากประเมิน baseline ปัจจุบัน แล้ววาง migration path แบบค่อยเป็นค่อยไปผ่านหน้า Developers",
       },
     ],
   },
@@ -27,25 +27,25 @@ const faqGroups = [
     title: "Partners",
     items: [
       {
-        q: "Gumon รับงานส่งมอบปลายทางเองหรือไม่",
-        a: "แนวทางหลักคือ Partner-only โดย Gumon โฟกัสแพลตฟอร์ม มาตรฐาน และ enablement",
+        q: "Gumon รับงานส่งมอบลูกค้าปลายทางโดยตรงหรือไม่",
+        a: "แนวทางหลักคือ Partner-enabled delivery โดย Gumon โฟกัส platform, standards และ tooling",
       },
       {
-        q: "พาร์ตเนอร์จะได้รับการสนับสนุนอะไร",
-        a: "ได้ทั้งคู่มือมาตรฐาน แนวทาง support flow และเส้นทางยกระดับทีมผ่าน learning system",
+        q: "พาร์ตเนอร์จะได้การสนับสนุนอะไร",
+        a: "ได้ทั้ง technical references, knowledge base และแนวทาง operational playbook สำหรับงานส่งมอบ",
       },
     ],
   },
   {
-    title: "Investors",
+    title: "Company",
     items: [
       {
-        q: "สามารถขอข้อมูลเชิงลึกได้อย่างไร",
-        a: "กด Request Investor Brief จากหน้า Investors หรือส่งคำขอผ่าน Contact พร้อมข้อมูลบริบทที่ต้องการประเมิน",
+        q: "ทำไมเว็บใหม่ตัดหน้าบางส่วนออก",
+        a: "เพื่อให้เส้นทางตัดสินใจสั้นลงและชัดขึ้น โดยยึดเฉพาะหน้าที่จำเป็นต่อการเริ่มใช้งานจริง",
       },
       {
-        q: "ทำไมหน้าเว็บสาธารณะจึงไม่มีตัวเลขทั้งหมด",
-        a: "หน้าเว็บเป็น Public Summary ส่วนข้อมูลเชิงลึกจะเปิดตามระดับความเหมาะสมของกระบวนการประเมิน",
+        q: "หากเข้าลิงก์เก่าจะเกิดอะไรขึ้น",
+        a: "ระบบจะพาไปหน้า legacy notice และแนะนำเส้นทางใหม่ที่เกี่ยวข้อง",
       },
     ],
   },
@@ -56,11 +56,9 @@ export default function FaqPage() {
     <section className="ui-section">
       <BreadcrumbJsonLd items={[{ name: "FAQ", path: "/faq" }]} />
       <div className="ui-container">
-        <p className="ui-kicker">Company / FAQ</p>
-        <h1 className="ui-h1">คำถามที่พบบ่อยจากผู้ใช้งานแต่ละบทบาท</h1>
-        <p className="mt-6 max-w-3xl ui-p">
-          เราจัดกลุ่มคำถามตามเส้นทางผู้ใช้ เพื่อให้ค้นคำตอบได้เร็วขึ้นก่อนติดต่อทีมงาน.
-        </p>
+        <p className="ui-kicker">FAQ</p>
+        <h1 className="ui-h1">คำถามที่พบบ่อยเกี่ยวกับเว็บไซต์และการเริ่มใช้งาน Gumon</h1>
+        <p className="mt-6 max-w-3xl ui-p">รวบรวมคำถามจากทีมพัฒนา พาร์ตเนอร์ และผู้ใช้งานที่กำลังเริ่มต้นบนโครงสร้างใหม่</p>
 
         <div className="mt-12 grid gap-6">
           {faqGroups.map((group) => (
@@ -80,12 +78,11 @@ export default function FaqPage() {
 
         <div className="mt-12 card p-7 shadow-soft">
           <p className="ui-kicker">Need More Detail</p>
-          <h2 className="mt-3 ui-h2">หากไม่พบคำตอบใน FAQ</h2>
+          <h2 className="mt-3 ui-h2">หากไม่พบคำตอบที่ต้องการ</h2>
           <div className="mt-6 flex flex-col sm:flex-row gap-3">
             <Link href="/contact" className="btn-primary">ไปหน้า Contact</Link>
             <a href="mailto:contact@gumon.io" className="btn-secondary">contact@gumon.io</a>
           </div>
-          <p className="mt-4 text-xs text-mist">Last updated: February 13, 2026</p>
         </div>
       </div>
     </section>
