@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { communityLinks, workToolLinks } from "@/lib/navigation";
 
 export default function ToolsMenu() {
   const [open, setOpen] = useState(false);
@@ -58,62 +59,32 @@ export default function ToolsMenu() {
           >
             <div className="grid gap-1">
               <div className="px-3 pt-1 pb-1 text-[10px] tracking-[0.16em] uppercase text-mist">Work Tools</div>
-              <a
-                href="https://docs.gumon.io/"
-                target="_blank"
-                rel="noreferrer"
-                onClick={closeMenu}
-              className="rounded-lg px-3 py-2 text-sm text-mist hover:text-ink hover:bg-bg1/60 transition"
-            >
-              Docs
-            </a>
-            <a
-              href="https://wiki.gumon.io/"
-              target="_blank"
-              rel="noreferrer"
-              onClick={closeMenu}
-              className="rounded-lg px-3 py-2 text-sm text-mist hover:text-ink hover:bg-bg1/60 transition"
-            >
-              Knowledge Base
-            </a>
-            <a
-              href="https://work.gumon.io/"
-              target="_blank"
-              rel="noreferrer"
-              onClick={closeMenu}
-              className="rounded-lg px-3 py-2 text-sm text-mist hover:text-ink hover:bg-bg1/60 transition"
-            >
-              Gumon Work
-            </a>
-            <a
-              href="https://github.com/gumon-tech"
-              target="_blank"
-              rel="noreferrer"
-              onClick={closeMenu}
-              className="rounded-lg px-3 py-2 text-sm text-mist hover:text-ink hover:bg-bg1/60 transition"
-              >
-                GitHub
-              </a>
+              {workToolLinks.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={closeMenu}
+                  className="rounded-lg px-3 py-2 text-sm text-mist hover:text-ink hover:bg-bg1/60 transition"
+                >
+                  {item.label}
+                </a>
+              ))}
               <div className="my-1 hr" />
               <div className="px-3 pt-1 pb-1 text-[10px] tracking-[0.16em] uppercase text-mist">Community</div>
-              <a
-                href="https://dkscenter.gumon.io/th"
-                target="_blank"
-                rel="noreferrer"
-                onClick={closeMenu}
-                className="rounded-lg px-3 py-2 text-sm text-mist hover:text-ink hover:bg-bg1/60 transition"
-              >
-                DKS Center
-              </a>
-              <a
-                href="https://game.gumon.io/"
-                target="_blank"
-                rel="noreferrer"
-                onClick={closeMenu}
-              className="rounded-lg px-3 py-2 text-sm text-mist hover:text-ink hover:bg-bg1/60 transition"
-            >
-              Gaming Hub
-            </a>
+              {communityLinks.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={closeMenu}
+                  className="rounded-lg px-3 py-2 text-sm text-mist hover:text-ink hover:bg-bg1/60 transition"
+                >
+                  {item.label}
+                </a>
+              ))}
             </div>
           </div>
         </>

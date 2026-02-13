@@ -115,6 +115,13 @@ export default function ContactPage() {
             <div className="mt-6 rounded-xl border border-dashed border-line/45 bg-bg1/45 p-4 text-sm text-mist">
               เริ่มต้นติดต่อได้ทันทีผ่านอีเมลหรือ Social ในช่องขวามือ ทีมจะประสานงานกลับโดยเร็ว
             </div>
+            <div id="dsar-request" className="mt-4 rounded-xl border border-line/35 bg-bg1/55 p-4 text-sm text-mist scroll-mt-28">
+              คำขอด้านข้อมูลส่วนบุคคล (เช่น ขอเข้าถึง แก้ไข หรือลบข้อมูล) ส่งได้ที่{" "}
+              <a href="mailto:data@gumon.io?subject=[DSAR]%20คำขอสิทธิข้อมูลส่วนบุคคล" className="text-ink underline underline-offset-4 decoration-accent hover:decoration-ink transition">
+                data@gumon.io
+              </a>{" "}
+              โดยระบุหัวข้ออีเมลขึ้นต้นว่า <span className="text-ink">[DSAR]</span>
+            </div>
           </div>
 
           <div className="lg:col-span-5 card p-7 shadow-soft">

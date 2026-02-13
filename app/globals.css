@@ -247,7 +247,7 @@ h4 {
 .back-to-top {
   position: fixed;
   right: 12px;
-  bottom: 18px;
+  bottom: max(18px, calc(12px + env(safe-area-inset-bottom)));
   z-index: 75;
   border-radius: 999px;
   border: 1px solid rgb(var(--line) / 0.6);
@@ -295,11 +295,15 @@ h4 {
 
 @media (max-width: 1023px) {
   body {
-    padding-bottom: 92px;
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
   }
 
-  .back-to-top {
-    bottom: 102px;
+  body.mobile-has-sticky-cta {
+    padding-bottom: calc(96px + env(safe-area-inset-bottom));
+  }
+
+  body.mobile-has-sticky-cta .back-to-top {
+    bottom: calc(104px + env(safe-area-inset-bottom));
   }
 }
 

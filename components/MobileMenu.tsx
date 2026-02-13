@@ -3,13 +3,14 @@
 import { useEffect, useRef, useState } from "react";
 import TrackedLink from "@/components/TrackedLink";
 import { usePathname } from "next/navigation";
+import {
+  communityLinks,
+  primaryNavItems,
+  supportLinks,
+  workToolLinks,
+} from "@/lib/navigation";
 
-type NavItem = {
-  href: string;
-  label: string;
-};
-
-export default function MobileMenu({ navItems }: { navItems: NavItem[] }) {
+export default function MobileMenu() {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement | null>(null);
   const pathname = usePathname();
@@ -70,7 +71,7 @@ export default function MobileMenu({ navItems }: { navItems: NavItem[] }) {
           />
           <div className="mobile-menu-panel">
             <div className="grid gap-3 text-[15px]">
-              {navItems.map((item) => (
+              {primaryNavItems.map((item) => (
                 <div key={item.href} onClick={closeMenu}>
                   <TrackedLink
                     href={item.href}
@@ -82,62 +83,44 @@ export default function MobileMenu({ navItems }: { navItems: NavItem[] }) {
               ))}
               <div className="hr" />
               <div className="px-1 text-[11px] tracking-[0.16em] uppercase text-mist">Work Tools</div>
-              <a
-                href="https://docs.gumon.io/"
-                target="_blank"
-                rel="noreferrer"
-                onClick={closeMenu}
-                className="rounded-lg px-3 py-2.5 text-mist hover:text-ink hover:bg-bg1/60 transition block"
-              >
-                Docs
-              </a>
-              <a
-                href="https://wiki.gumon.io/"
-                target="_blank"
-                rel="noreferrer"
-                onClick={closeMenu}
-                className="rounded-lg px-3 py-2.5 text-mist hover:text-ink hover:bg-bg1/60 transition block"
-              >
-                Knowledge Base
-              </a>
-              <a
-                href="https://work.gumon.io/"
-                target="_blank"
-                rel="noreferrer"
-                onClick={closeMenu}
-                className="rounded-lg px-3 py-2.5 text-mist hover:text-ink hover:bg-bg1/60 transition block"
-              >
-                Gumon Work
-              </a>
-              <a
-                href="https://github.com/gumon-tech"
-                target="_blank"
-                rel="noreferrer"
-                onClick={closeMenu}
-                className="rounded-lg px-3 py-2.5 text-mist hover:text-ink hover:bg-bg1/60 transition block"
-              >
-                GitHub
-              </a>
+              {workToolLinks.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={closeMenu}
+                  className="rounded-lg px-3 py-2.5 text-mist hover:text-ink hover:bg-bg1/60 transition block"
+                >
+                  {item.label}
+                </a>
+              ))}
               <div className="hr" />
               <div className="px-1 text-[11px] tracking-[0.16em] uppercase text-mist">Community</div>
-              <a
-                href="https://dkscenter.gumon.io/th"
-                target="_blank"
-                rel="noreferrer"
-                onClick={closeMenu}
-                className="rounded-lg px-3 py-2.5 text-mist hover:text-ink hover:bg-bg1/60 transition block"
-              >
-                DKS Center
-              </a>
-              <a
-                href="https://game.gumon.io/"
-                target="_blank"
-                rel="noreferrer"
-                onClick={closeMenu}
-                className="rounded-lg px-3 py-2.5 text-mist hover:text-ink hover:bg-bg1/60 transition block"
-              >
-                Gaming Hub
-              </a>
+              {communityLinks.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={closeMenu}
+                  className="rounded-lg px-3 py-2.5 text-mist hover:text-ink hover:bg-bg1/60 transition block"
+                >
+                  {item.label}
+                </a>
+              ))}
+              <div className="hr" />
+              <div className="px-1 text-[11px] tracking-[0.16em] uppercase text-mist">Support</div>
+              {supportLinks.map((item) => (
+                <div key={item.href} onClick={closeMenu}>
+                  <TrackedLink
+                    href={item.href}
+                    className="rounded-lg px-3 py-2.5 text-mist hover:text-ink hover:bg-bg1/60 transition block"
+                  >
+                    {item.label}
+                  </TrackedLink>
+                </div>
+              ))}
               <div onClick={closeMenu}>
                 <TrackedLink href="/contact" className="btn-primary w-full">
                   ติดต่อทีมงาน

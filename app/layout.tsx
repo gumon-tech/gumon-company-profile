@@ -11,7 +11,15 @@ import ToolsMenu from "@/components/ToolsMenu";
 import HeaderScrollBehavior from "@/components/HeaderScrollBehavior";
 import MobileMenu from "@/components/MobileMenu";
 import BackToTopButton from "@/components/BackToTopButton";
+import AnalyticsBootstrap from "@/components/AnalyticsBootstrap";
 import { companyInfo } from "@/lib/companyInfo";
+import {
+  communityLinks,
+  legalLinks,
+  primaryNavItems,
+  supportLinks,
+  workToolLinks,
+} from "@/lib/navigation";
 
 const sarabun = Sarabun({
   subsets: ["thai", "latin"],
@@ -73,21 +81,6 @@ export const metadata: Metadata = {
     images: ["/assets/from-gumon/gumon_arc.png"],
   },
 };
-
-const navItems = [
-  { href: "/platform", label: "Platform" },
-  { href: "/developers", label: "Developers" },
-  { href: "/partners", label: "Partners" },
-  { href: "/resources", label: "Resources" },
-  { href: "/company", label: "Company" },
-  { href: "/team", label: "Team" },
-];
-
-const legalLinks = [
-  { href: "/privacy", label: "Privacy" },
-  { href: "/terms", label: "Terms" },
-  { href: "/cookies", label: "Cookies" },
-];
 
 export default function RootLayout({
   children,
@@ -166,12 +159,12 @@ export default function RootLayout({
             </Link>
 
             <nav className="hidden xl:flex items-center gap-4 text-sm text-ink/90">
-              {navItems.map((item) => (
+              {primaryNavItems.map((item) => (
                 <NavLink key={item.href} href={item.href} label={item.label} />
               ))}
             </nav>
 
-            <MobileMenu navItems={navItems} />
+            <MobileMenu />
 
             <div className="hidden xl:flex items-center gap-2">
               <ToolsMenu />
@@ -201,7 +194,7 @@ export default function RootLayout({
               <div>
                 <div className="text-[11px] tracking-[0.18em] uppercase text-mist">Platform</div>
                 <div className="mt-3 grid gap-2">
-                  {navItems.slice(0, 2).map((item) => (
+                  {primaryNavItems.slice(0, 2).map((item) => (
                     <TrackedLink key={item.href} href={item.href} className="text-mist hover:text-ink transition">
                       {item.label}
                     </TrackedLink>
@@ -211,7 +204,7 @@ export default function RootLayout({
               <div>
                 <div className="text-[11px] tracking-[0.18em] uppercase text-mist">Audience</div>
                 <div className="mt-3 grid gap-2">
-                  {navItems.slice(2, 4).map((item) => (
+                  {primaryNavItems.slice(2, 4).map((item) => (
                     <TrackedLink key={item.href} href={item.href} className="text-mist hover:text-ink transition">
                       {item.label}
                     </TrackedLink>
@@ -221,7 +214,7 @@ export default function RootLayout({
               <div>
                 <div className="text-[11px] tracking-[0.18em] uppercase text-mist">Company</div>
                 <div className="mt-3 grid gap-2">
-                  {navItems.slice(4).map((item) => (
+                  {primaryNavItems.slice(4).map((item) => (
                     <TrackedLink key={item.href} href={item.href} className="text-mist hover:text-ink transition">
                       {item.label}
                     </TrackedLink>
@@ -231,40 +224,31 @@ export default function RootLayout({
               <div>
                 <div className="text-[11px] tracking-[0.18em] uppercase text-mist">Tools</div>
                 <div className="mt-3 grid gap-2">
-                  <TrackedLink href="https://docs.gumon.io/" target="_blank" rel="noreferrer" className="text-mist hover:text-ink transition">
-                    Docs
-                  </TrackedLink>
-                  <TrackedLink href="https://wiki.gumon.io/" target="_blank" rel="noreferrer" className="text-mist hover:text-ink transition">
-                    Knowledge Base
-                  </TrackedLink>
-                  <TrackedLink href="https://work.gumon.io/" target="_blank" rel="noreferrer" className="text-mist hover:text-ink transition">
-                    Gumon Work
-                  </TrackedLink>
-                  <TrackedLink href="https://github.com/gumon-tech" target="_blank" rel="noreferrer" className="text-mist hover:text-ink transition">
-                    GitHub
-                  </TrackedLink>
+                  {workToolLinks.map((item) => (
+                    <TrackedLink key={item.href} href={item.href} target="_blank" rel="noreferrer" className="text-mist hover:text-ink transition">
+                      {item.label}
+                    </TrackedLink>
+                  ))}
                 </div>
               </div>
               <div>
                 <div className="text-[11px] tracking-[0.18em] uppercase text-mist">Community</div>
                 <div className="mt-3 grid gap-2">
-                  <TrackedLink href="https://dkscenter.gumon.io/th" target="_blank" rel="noreferrer" className="text-mist hover:text-ink transition">
-                    DKS Center
-                  </TrackedLink>
-                  <TrackedLink href="https://game.gumon.io/" target="_blank" rel="noreferrer" className="text-mist hover:text-ink transition">
-                    Gaming Hub
-                  </TrackedLink>
+                  {communityLinks.map((item) => (
+                    <TrackedLink key={item.href} href={item.href} target="_blank" rel="noreferrer" className="text-mist hover:text-ink transition">
+                      {item.label}
+                    </TrackedLink>
+                  ))}
                 </div>
               </div>
               <div>
                 <div className="text-[11px] tracking-[0.18em] uppercase text-mist">Support</div>
                 <div className="mt-3 grid gap-2">
-                  <TrackedLink href="/faq" className="text-mist hover:text-ink transition">
-                    FAQ
-                  </TrackedLink>
-                  <TrackedLink href="/contact" className="text-mist hover:text-ink transition">
-                    Contact
-                  </TrackedLink>
+                  {supportLinks.map((item) => (
+                    <TrackedLink key={item.href} href={item.href} className="text-mist hover:text-ink transition">
+                      {item.label}
+                    </TrackedLink>
+                  ))}
                 </div>
               </div>
             </div>
@@ -297,6 +281,7 @@ export default function RootLayout({
         </footer>
 
         <CookieConsentBanner />
+        <AnalyticsBootstrap />
       </body>
     </html>
   );
