@@ -1,7 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { Sarabun, Space_Grotesk } from "next/font/google";
 import NavLink from "@/components/NavLink";
 import CookieConsentBanner from "@/components/CookieConsentBanner";
@@ -12,7 +11,9 @@ import HeaderScrollBehavior from "@/components/HeaderScrollBehavior";
 import MobileMenu from "@/components/MobileMenu";
 import BackToTopButton from "@/components/BackToTopButton";
 import AnalyticsBootstrap from "@/components/AnalyticsBootstrap";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { companyInfo } from "@/lib/companyInfo";
+import { supportedLocales } from "@/lib/i18n";
 import {
   communityLinks,
   legalLinks,
@@ -47,9 +48,10 @@ export const metadata: Metadata = {
     apple: "/assets/logo/gumon-mark.png",
   },
   description:
-    "แพลตฟอร์มเทคโนโลยีแบบเปิดสำหรับองค์กรที่ต้องการส่งมอบซอฟต์แวร์ได้เร็วขึ้น มาตรฐานชัดเจน และขยายระบบได้อย่างยั่งยืน",
+    "Open technology platform for organizations that need faster software delivery, clearer standards, and sustainable scaling.",
   alternates: {
     canonical: "/",
+    languages: Object.fromEntries(supportedLocales.map((locale) => [locale, `/${locale}`])),
   },
   keywords: [
     "Gumon Technology",
@@ -64,7 +66,7 @@ export const metadata: Metadata = {
     siteName: "Gumon Technology",
     title: "Gumon Technology",
     description:
-      "Open Platform ที่ออกแบบเพื่อการส่งมอบจริง เชื่อมทีมเทคโนโลยี พาร์ตเนอร์ และการเติบโตเชิงธุรกิจเข้าด้วยกัน",
+      "An open platform designed for practical delivery, connecting technology teams, partners, and business growth.",
     url: "/",
     images: [
       {
@@ -77,7 +79,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Gumon Technology",
     description:
-      "Open Platform ที่ออกแบบเพื่อการส่งมอบจริง เชื่อมทีมเทคโนโลยี พาร์ตเนอร์ และการเติบโตเชิงธุรกิจเข้าด้วยกัน",
+      "An open platform designed for practical delivery, connecting technology teams, partners, and business growth.",
     images: ["/assets/from-gumon/gumon_arc.png"],
   },
 };
@@ -101,9 +103,9 @@ export default function RootLayout({
         taxID: companyInfo.registrationNumber,
         address: {
           "@type": "PostalAddress",
-          streetAddress: "33/4 หมู่ 11 เดอะไนน์ทาวเวอร์ ตึก A ชั้น 35 พระราม 9",
-          addressLocality: "ห้วยขวาง",
-          addressRegion: "กรุงเทพมหานคร",
+          streetAddress: "33/4 Moo 11, The Nine Towers, Tower A, Floor 35, Rama 9 Road",
+          addressLocality: "Huai Khwang",
+          addressRegion: "Bangkok",
           postalCode: "10310",
           addressCountry: "TH",
         },
@@ -131,7 +133,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="th" className={`${sarabun.variable} ${spaceGrotesk.variable}`}>
+    <html lang="en" className={`${sarabun.variable} ${spaceGrotesk.variable}`}>
       <body data-mode="institutional">
         <HeaderScrollBehavior />
         <script
@@ -144,7 +146,7 @@ export default function RootLayout({
 
         <header className="site-header sticky top-0 z-[90] border-b border-line/60 bg-bg0/92 shadow-[0_10px_24px_rgba(3,6,12,0.45)] supports-[backdrop-filter]:bg-bg0/84 supports-[backdrop-filter]:backdrop-blur-xl">
           <div className="ui-container h-16 lg:h-[72px] flex items-center justify-between gap-3">
-            <Link href="/" className="flex items-center gap-3">
+            <TrackedLink href="/" className="flex items-center gap-3">
               <span className="logo-swap" aria-label="Gumon mark">
                 <Image src="/assets/logo/gumon-white.png" alt="Gumon" width={36} height={36} sizes="36px" className="logo-inst" />
                 <Image src="/assets/logo/gumon-slate.png" alt="Gumon" width={36} height={36} sizes="36px" className="logo-field" />
@@ -156,7 +158,7 @@ export default function RootLayout({
                   Open Source Platform Systems
                 </div>
               </div>
-            </Link>
+            </TrackedLink>
 
             <nav className="hidden xl:flex items-center gap-4 text-sm text-ink/90">
               {primaryNavItems.map((item) => (
@@ -167,6 +169,7 @@ export default function RootLayout({
             <MobileMenu />
 
             <div className="hidden xl:flex items-center gap-2">
+              <LanguageSwitcher />
               <ToolsMenu />
               <TrackedLink href="/contact" className="btn-primary">
                 Contact
@@ -182,11 +185,11 @@ export default function RootLayout({
         <footer className="border-t border-line/20">
           <div className="ui-container py-12 grid gap-8 lg:grid-cols-12">
             <div className="lg:col-span-3">
-              <Link href="/" className="text-sm font-semibold hover:text-ink/90 transition">
+              <TrackedLink href="/" className="text-sm font-semibold hover:text-ink/90 transition">
                 Gumon Technology
-              </Link>
+              </TrackedLink>
               <p className="mt-3 text-sm text-mist leading-relaxed max-w-[32ch]">
-                Open Platform สำหรับองค์กรที่ต้องการส่งมอบงานเทคโนโลยีได้เร็วขึ้น พร้อมมาตรฐานที่ขยายได้ในระยะยาว
+                Open platform for organizations that need faster technology delivery with standards that scale over time.
               </p>
             </div>
 
@@ -258,12 +261,12 @@ export default function RootLayout({
             <div className="lg:col-span-12 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs text-mist">
               <div>
                 © {new Date().getFullYear()}{" "}
-                <Link href="/" className="hover:text-ink transition">
+                <TrackedLink href="/" className="hover:text-ink transition">
                   Gumon Technology
-                </Link>
+                </TrackedLink>
                 . All rights reserved.
                 <div className="mt-1">
-                  {companyInfo.legalName} | เลขทะเบียนนิติบุคคล {companyInfo.registrationNumber}
+                  {companyInfo.legalName} | Registration No. {companyInfo.registrationNumber}
                 </div>
               </div>
               <div className="flex flex-wrap items-center gap-x-4 gap-y-2">

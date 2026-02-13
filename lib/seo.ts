@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { supportedLocales } from "@/lib/i18n";
 
 type BuildPageMetadataArgs = {
   title: string;
@@ -20,12 +21,16 @@ const BASE_KEYWORDS = [
 
 export function buildPageMetadata({ title, description, path }: BuildPageMetadataArgs): Metadata {
   const fullTitle = `${title} | ${SITE_NAME}`;
+  const languages = Object.fromEntries(
+    supportedLocales.map((locale) => [locale, path === "/" ? `/${locale}` : `/${locale}${path}`]),
+  );
 
   return {
     title,
     description,
     alternates: {
       canonical: path,
+      languages,
     },
     keywords: BASE_KEYWORDS,
     openGraph: {

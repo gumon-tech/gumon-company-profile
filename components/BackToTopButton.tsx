@@ -1,11 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { detectLocaleFromPathname, getUiCopy } from "@/lib/i18n";
 
 const SHOW_AFTER_Y = 480;
 
 export default function BackToTopButton() {
   const [visible, setVisible] = useState(false);
+  const pathname = usePathname();
+  const locale = detectLocaleFromPathname(pathname);
+  const copy = getUiCopy(locale);
 
   useEffect(() => {
     let ticking = false;
@@ -36,14 +41,14 @@ export default function BackToTopButton() {
   return (
     <button
       type="button"
-      aria-label="Back to top"
+      aria-label={copy.backToTop}
       onClick={handleClick}
       className={[
         "back-to-top",
         visible ? "back-to-top-show" : "back-to-top-hide",
       ].join(" ")}
     >
-      ↑ Top
+      ↑ {copy.backToTop}
     </button>
   );
 }

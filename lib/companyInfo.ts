@@ -1,7 +1,7 @@
 export const companyInfo = {
-  legalName: "บริษัท กุมอน เทคโนโลยี จำกัด",
+  legalName: "Gumon Technology Co., Ltd.",
   registrationNumber: "0405566007844",
-  registeredAt: "21 ธันวาคม 2566",
+  registeredAt: "December 21, 2023",
   address:
-    "33/4, หมู่ 11, เดอะไนน์ทาวเวอร์ ตึก A, ชั้น 35, พระราม 9, ห้วยขวาง, ห้วยขวาง, กรุงเทพมหานคร 10310",
+    "33/4 Moo 11, The Nine Towers, Tower A, Floor 35, Rama 9 Road, Huai Khwang, Bangkok 10310, Thailand",
 } as const;

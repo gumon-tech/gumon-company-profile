@@ -1,11 +1,16 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import { communityLinks, workToolLinks } from "@/lib/navigation";
+import { detectLocaleFromPathname, getUiCopy } from "@/lib/i18n";
 
 export default function ToolsMenu() {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement | null>(null);
+  const pathname = usePathname();
+  const locale = detectLocaleFromPathname(pathname);
+  const copy = getUiCopy(locale);
 
   useEffect(() => {
     if (!open) return;
@@ -42,7 +47,7 @@ export default function ToolsMenu() {
         aria-haspopup="menu"
         className="btn-ghost"
       >
-        Tools
+        {copy.tools}
       </button>
 
       {open ? (
@@ -58,7 +63,7 @@ export default function ToolsMenu() {
             className="absolute right-0 top-full z-[110] mt-2 w-64 rounded-xl border border-line/45 bg-bg0 p-2 shadow-[0_20px_44px_rgba(2,8,16,0.58)]"
           >
             <div className="grid gap-1">
-              <div className="px-3 pt-1 pb-1 text-[10px] tracking-[0.16em] uppercase text-mist">Work Tools</div>
+              <div className="px-3 pt-1 pb-1 text-[10px] tracking-[0.16em] uppercase text-mist">{copy.workTools}</div>
               {workToolLinks.map((item) => (
                 <a
                   key={item.href}
@@ -72,7 +77,7 @@ export default function ToolsMenu() {
                 </a>
               ))}
               <div className="my-1 hr" />
-              <div className="px-3 pt-1 pb-1 text-[10px] tracking-[0.16em] uppercase text-mist">Community</div>
+              <div className="px-3 pt-1 pb-1 text-[10px] tracking-[0.16em] uppercase text-mist">{copy.community}</div>
               {communityLinks.map((item) => (
                 <a
                   key={item.href}

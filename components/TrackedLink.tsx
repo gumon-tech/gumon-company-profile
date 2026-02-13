@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { usePathname } from "next/navigation";
+import { detectLocaleFromPathname, localizePath } from "@/lib/i18n";
 
 type TrackedLinkProps = {
   href: string;
@@ -22,6 +24,9 @@ export default function TrackedLink({
   target,
   rel,
 }: TrackedLinkProps) {
+  const pathname = usePathname();
+  const locale = detectLocaleFromPathname(pathname);
+
   if (isExternalHref(href) || target === "_blank") {
     return (
       <a href={href} target={target} rel={rel} className={className}>
@@ -30,8 +35,10 @@ export default function TrackedLink({
     );
   }
 
+  const localizedHref = href.startsWith("/") ? localizePath(href, locale) : href;
+
   return (
-    <Link href={href} className={className}>
+    <Link href={localizedHref} className={className}>
       {children}
     </Link>
   );

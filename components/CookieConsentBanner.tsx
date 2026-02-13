@@ -1,14 +1,19 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import TrackedLink from "@/components/TrackedLink";
 import {
   readCookieConsent,
   saveCookieConsent,
 } from "@/lib/cookieConsent";
+import { detectLocaleFromPathname, getUiCopy } from "@/lib/i18n";
 
 export default function CookieConsentBanner() {
   const [visible, setVisible] = useState(false);
+  const pathname = usePathname();
+  const locale = detectLocaleFromPathname(pathname);
+  const copy = getUiCopy(locale);
 
   useEffect(() => {
     let timer: number | undefined;
@@ -43,10 +48,10 @@ export default function CookieConsentBanner() {
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="min-w-0">
           <p className="text-[11px] sm:text-xs text-mist leading-snug">
-            เว็บไซต์นี้ใช้คุกกี้ที่จำเป็นต่อการทำงาน และอาจใช้คุกกี้วิเคราะห์เพื่อปรับปรุงการตลาดเมื่อคุณยินยอม{" "}
-            <Link href="/cookies" className="text-ink underline underline-offset-4 decoration-accent hover:decoration-ink transition">
-              Cookie Notice
-            </Link>
+            {copy.cookieShort}{" "}
+            <TrackedLink href="/cookies" className="text-ink underline underline-offset-4 decoration-accent hover:decoration-ink transition">
+              {copy.cookieNotice}
+            </TrackedLink>
           </p>
         </div>
         <div className="flex shrink-0 items-center gap-2">
@@ -55,7 +60,7 @@ export default function CookieConsentBanner() {
             onClick={acceptEssentialOnly}
             className="inline-flex items-center justify-center rounded-full border border-line/50 px-3.5 py-1.5 text-xs font-semibold text-ink/90 hover:border-line/70 transition"
           >
-            จำเป็นเท่านั้น
+            {copy.cookieEssential}
           </button>
           <button
             type="button"
@@ -66,7 +71,7 @@ export default function CookieConsentBanner() {
               boxShadow: "0 6px 16px rgb(var(--accent) / 0.26)",
             }}
           >
-            ยอมรับทั้งหมด
+            {copy.cookieAcceptAll}
           </button>
         </div>
       </div>

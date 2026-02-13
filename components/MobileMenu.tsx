@@ -9,11 +9,15 @@ import {
   supportLinks,
   workToolLinks,
 } from "@/lib/navigation";
+import { detectLocaleFromPathname, getUiCopy } from "@/lib/i18n";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default function MobileMenu() {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement | null>(null);
   const pathname = usePathname();
+  const locale = detectLocaleFromPathname(pathname);
+  const copy = getUiCopy(locale);
 
   const closeMenu = () => setOpen(false);
 
@@ -58,7 +62,7 @@ export default function MobileMenu() {
         onClick={() => setOpen((prev) => !prev)}
         className="inline-flex items-center rounded-full border border-line/55 bg-bg1/75 px-3.5 py-2 text-sm font-medium text-ink hover:bg-surf/70 transition"
       >
-        เมนู
+        {copy.menu}
       </button>
 
       {open ? (
@@ -71,6 +75,10 @@ export default function MobileMenu() {
           />
           <div className="mobile-menu-panel">
             <div className="grid gap-3 text-[15px]">
+              <div className="px-1">
+                <LanguageSwitcher />
+              </div>
+              <div className="hr" />
               {primaryNavItems.map((item) => (
                 <div key={item.href} onClick={closeMenu}>
                   <TrackedLink
@@ -82,7 +90,7 @@ export default function MobileMenu() {
                 </div>
               ))}
               <div className="hr" />
-              <div className="px-1 text-[11px] tracking-[0.16em] uppercase text-mist">Work Tools</div>
+              <div className="px-1 text-[11px] tracking-[0.16em] uppercase text-mist">{copy.workTools}</div>
               {workToolLinks.map((item) => (
                 <a
                   key={item.href}
@@ -96,7 +104,7 @@ export default function MobileMenu() {
                 </a>
               ))}
               <div className="hr" />
-              <div className="px-1 text-[11px] tracking-[0.16em] uppercase text-mist">Community</div>
+              <div className="px-1 text-[11px] tracking-[0.16em] uppercase text-mist">{copy.community}</div>
               {communityLinks.map((item) => (
                 <a
                   key={item.href}
@@ -110,7 +118,7 @@ export default function MobileMenu() {
                 </a>
               ))}
               <div className="hr" />
-              <div className="px-1 text-[11px] tracking-[0.16em] uppercase text-mist">Support</div>
+              <div className="px-1 text-[11px] tracking-[0.16em] uppercase text-mist">{copy.support}</div>
               {supportLinks.map((item) => (
                 <div key={item.href} onClick={closeMenu}>
                   <TrackedLink
@@ -123,7 +131,7 @@ export default function MobileMenu() {
               ))}
               <div onClick={closeMenu}>
                 <TrackedLink href="/contact" className="btn-primary w-full">
-                  ติดต่อทีมงาน
+                  {copy.contactTeam}
                 </TrackedLink>
               </div>
             </div>

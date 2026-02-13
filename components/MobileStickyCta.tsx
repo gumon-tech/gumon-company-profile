@@ -4,10 +4,14 @@ import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import TrackedLink from "@/components/TrackedLink";
 import { stickyCtaEnabledRoutes } from "@/lib/navigation";
+import { detectLocaleFromPathname, getUiCopy, stripLocalePrefix } from "@/lib/i18n";
 
 export default function MobileStickyCta() {
   const pathname = usePathname();
-  const enabled = Boolean(pathname && stickyCtaEnabledRoutes.has(pathname));
+  const locale = detectLocaleFromPathname(pathname);
+  const copy = getUiCopy(locale);
+  const normalizedPath = pathname ? stripLocalePrefix(pathname) : "";
+  const enabled = Boolean(normalizedPath && stickyCtaEnabledRoutes.has(normalizedPath));
 
   useEffect(() => {
     const className = "mobile-has-sticky-cta";
@@ -28,7 +32,7 @@ export default function MobileStickyCta() {
   return (
     <div className="mobile-sticky-cta lg:hidden">
       <TrackedLink href="/contact" className="btn-primary w-full">
-        คุยกับทีมเทคนิค
+        {copy.contactTeam}
       </TrackedLink>
     </div>
   );

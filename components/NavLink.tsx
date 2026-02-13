@@ -2,6 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import {
+  detectLocaleFromPathname,
+  localizePath,
+  stripLocalePrefix,
+} from "@/lib/i18n";
 
 export default function NavLink({
   href,
@@ -11,14 +16,17 @@ export default function NavLink({
   label: string;
 }) {
   const pathname = usePathname();
+  const locale = detectLocaleFromPathname(pathname);
+  const currentPath = stripLocalePrefix(pathname || "/");
+  const localizedHref = localizePath(href, locale);
   const isActive =
     href === "/"
-      ? pathname === "/"
-      : pathname?.startsWith(href);
+      ? currentPath === "/"
+      : currentPath.startsWith(href);
 
   return (
     <Link
-      href={href}
+      href={localizedHref}
       aria-current={isActive ? "page" : undefined}
       className={[
         "relative hover:text-ink transition-colors",

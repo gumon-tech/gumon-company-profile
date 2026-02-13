@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "check:ia": "node scripts/check-ia-links.mjs",
-    "check:release": "npm run check:ia && npm run lint && npm run build"
+    "check:release": "npm run check:ia && npm run lint && npm run build",
+    "optimize:team-images": "bash scripts/optimize-team-images.sh"
   },
   "dependencies": {
     "next": "15.2.4",
