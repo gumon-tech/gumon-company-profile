@@ -92,9 +92,17 @@ export default function RootLayout({
   const shareUrl = `${normalizedSiteUrl}/en`;
   const shareMessage = "Open Platform for Delivery Teams. Deliver faster with clear standards and predictable outcomes.";
   const encodedShareUrl = encodeURIComponent(shareUrl);
+  const encodedShareMessage = encodeURIComponent(shareMessage);
   const encodedShareText = encodeURIComponent(`${shareMessage} ${shareUrl}`);
   const encodedFacebookQuote = encodeURIComponent(shareMessage);
-  const socialShareLinks = [
+  type SocialShareLink = {
+    href: string;
+    label: string;
+    icon?: string;
+    iconClassName?: string;
+    symbol?: string;
+  };
+  const socialShareLinks: SocialShareLink[] = [
     {
       href: `https://www.facebook.com/sharer/sharer.php?u=${encodedShareUrl}&quote=${encodedFacebookQuote}`,
       icon: "/assets/social/facebook.svg",
@@ -118,6 +126,16 @@ export default function RootLayout({
       icon: "/assets/social/whatsapp.svg",
       label: "Share on WhatsApp",
       iconClassName: "brightness-0 invert",
+    },
+    {
+      href: `https://twitter.com/intent/tweet?text=${encodedShareMessage}&url=${encodedShareUrl}`,
+      label: "Share on X",
+      symbol: "X",
+    },
+    {
+      href: `https://t.me/share/url?url=${encodedShareUrl}&text=${encodedShareMessage}`,
+      label: "Share on Telegram",
+      symbol: "TG",
     },
   ];
   const structuredData = {
@@ -295,7 +313,7 @@ export default function RootLayout({
 
             <div className="lg:col-span-12 hr" />
 
-            <div className="lg:col-span-12 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs text-mist">
+            <div className="lg:col-span-12 grid gap-4 text-xs text-mist md:grid-cols-[minmax(260px,1fr)_minmax(0,2fr)] md:items-end">
               <div>
                 © {new Date().getFullYear()}{" "}
                 <TrackedLink href="/" className="hover:text-ink transition">
@@ -306,26 +324,8 @@ export default function RootLayout({
                   <FooterLegalLine />
                 </div>
               </div>
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-3 md:justify-end">
-                <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-                  <TrackedLink href="/faq" className="hover:text-ink transition">{layoutCopy.faqLabel}</TrackedLink>
-                  <TrackedLink href="/company#legal-information" className="hover:text-ink transition">{layoutCopy.companyInfoLink}</TrackedLink>
-                  <TrackedLink href="mailto:contact@gumon.io" className="hover:text-ink transition">{layoutCopy.contactEmail}</TrackedLink>
-                </div>
-
-                <span aria-hidden className="hidden md:inline-block h-3 w-px bg-line/45" />
-
-                <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-                  {legalLinks.map((item) => (
-                    <TrackedLink key={item.href} href={item.href} className="hover:text-ink transition">
-                      {item.label}
-                    </TrackedLink>
-                  ))}
-                </div>
-
-                <span aria-hidden className="hidden md:inline-block h-3 w-px bg-line/45" />
-
-                <div className="flex items-center gap-2">
+              <div className="flex flex-col gap-3 md:items-end">
+                <div className="flex flex-wrap items-center gap-2 md:justify-end">
                   <span className="text-[10px] uppercase tracking-[0.16em] text-mist">Share</span>
                   {socialShareLinks.map((item) => (
                     <TrackedLink
@@ -336,16 +336,32 @@ export default function RootLayout({
                       aria-label={item.label}
                       className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-line/70 bg-bg0/90 hover:border-ink/40 hover:bg-bg1 transition"
                     >
-                      <Image
-                        src={item.icon}
-                        alt=""
-                        width={17}
-                        height={17}
-                        aria-hidden
-                        className={item.iconClassName}
-                      />
+                      {item.icon ? (
+                        <Image
+                          src={item.icon}
+                          alt=""
+                          width={17}
+                          height={17}
+                          aria-hidden
+                          className={item.iconClassName}
+                        />
+                      ) : (
+                        <span className="text-[11px] font-semibold tracking-[0.04em] text-ink/90" aria-hidden>
+                          {item.symbol}
+                        </span>
+                      )}
                     </TrackedLink>
                   ))}
+                </div>
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-2 md:justify-end">
+                  <TrackedLink href="/faq" className="hover:text-ink transition">{layoutCopy.faqLabel}</TrackedLink>
+                  <TrackedLink href="/company#legal-information" className="hover:text-ink transition">{layoutCopy.companyInfoLink}</TrackedLink>
+                  {legalLinks.map((item) => (
+                    <TrackedLink key={item.href} href={item.href} className="hover:text-ink transition">
+                      {item.label}
+                    </TrackedLink>
+                  ))}
+                  <TrackedLink href="mailto:contact@gumon.io" className="hover:text-ink transition">{layoutCopy.contactEmail}</TrackedLink>
                 </div>
               </div>
             </div>
