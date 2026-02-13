@@ -9,6 +9,7 @@ type BuildPageMetadataArgs = {
 
 const SITE_NAME = "Gumon Technology";
 const DEFAULT_OG_IMAGE = "/assets/social/og-share-en.png";
+const DEFAULT_TWITTER_IMAGE = "/assets/social/twitter-share-en.png";
 
 const BASE_KEYWORDS = [
   "Gumon Technology",
@@ -50,7 +51,7 @@ export function buildPageMetadata({ title, description, path }: BuildPageMetadat
       card: "summary_large_image",
       title: fullTitle,
       description,
-      images: [DEFAULT_OG_IMAGE],
+      images: [DEFAULT_TWITTER_IMAGE],
     },
   };
 }

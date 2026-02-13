@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: layoutCopy.siteName,
     description: layoutCopy.metadata.twitterDescription,
-    images: ["/assets/social/og-share-en.png"],
+    images: ["/assets/social/twitter-share-en.png"],
   },
 };
 
