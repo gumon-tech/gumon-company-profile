@@ -1,70 +1,95 @@
 import Link from "next/link";
+import Image from "next/image";
 import Reveal from "@/components/Reveal";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = buildPageMetadata({
   title: "Ecosystem",
   description:
-    "ภาพรวม ecosystem ของ Gumon ที่เน้นความร่วมมือที่ยุติธรรม ขอบเขตชัดเจน และการเติบโตร่วมกัน",
-};
+    "ภาพรวมระบบนิเวศ Gumon ที่เชื่อม Platform, Partners และ Learning ให้เติบโตร่วมกันอย่างเป็นระบบ",
+  path: "/ecosystem",
+});
 
-const items = [
+const ecosystemPillars = [
   {
-    title: "การต่อยอดด้วยปลั๊กอินและบริการ",
-    body:
-      "เปิดพื้นที่ให้พาร์ตเนอร์และนักพัฒนาต่อยอดได้บนแกนหลักที่มั่นคง",
+    title: "Shared Standards",
+    body: "ทุกฝ่ายทำงานบนกรอบมาตรฐานเดียวกัน เพื่อลด friction ระหว่างทีม",
   },
   {
-    title: "กติกาการทำงานร่วมกัน",
-    body:
-      "กติกาที่โปร่งใสช่วยให้ทุกฝ่ายทำงานร่วมกันได้อย่างเป็นธรรมและไว้ใจได้",
+    title: "Role Clarity",
+    body: "กำหนดบทบาทชัดเจนระหว่างผู้พัฒนาแพลตฟอร์ม ผู้ส่งมอบ และศูนย์การเรียนรู้",
   },
   {
-    title: "แนวทางการมีส่วนร่วม",
-    body:
-      "มีแนวทางชัดเจนสำหรับโค้ด เอกสาร การทดสอบ และการออกรุ่น",
+    title: "Partner Growth",
+    body: "เปิดทางให้พาร์ตเนอร์ขยายการใช้งานและต่อยอดเชิงธุรกิจบนโครงเดียวกัน",
   },
   {
-    title: "เส้นทางสู่ตลาด",
-    body:
-      "ค่อยๆ เติบโตจากการใช้งานจริงไปสู่โอกาสเชิงธุรกิจที่พาร์ตเนอร์ขับเคลื่อนได้",
+    title: "Field Feedback Loop",
+    body: "นำบทเรียนจากงานภาคสนามกลับมายกระดับเครื่องมือและแนวทางกลาง",
   },
+];
+
+const selectedWorks = [
+  { src: "/assets/field-impact/field-impact-01.jpg", tag: "Government", title: "Public Sector Collaboration" },
+  { src: "/assets/field-impact/field-impact-04.jpg", tag: "Government", title: "NCSA Collaboration" },
+  { src: "/assets/field-impact/field-impact-09.jpg", tag: "Education", title: "KMITL Classroom Session" },
+  { src: "/assets/field-impact/field-impact-10.jpg", tag: "Education", title: "DigiTech Showcase" },
+  { src: "/assets/field-impact/field-impact-13.jpg", tag: "Field Impact", title: "Healthcare Use Case" },
+  { src: "/assets/field-impact/field-impact-15.jpg", tag: "Field Impact", title: "Industry Partner Activity" },
 ];
 
 export default function Page() {
   return (
     <section className="ui-section">
+      <BreadcrumbJsonLd items={[{ name: "Ecosystem", path: "/ecosystem" }]} />
       <div className="ui-container">
         <Reveal>
-          <p className="ui-kicker">ECOSYSTEM AND GROWTH</p>
-          <h1 className="ui-h1">ทุกฝ่ายได้เติบโตไปในทิศทางเดียวกัน</h1>
+          <p className="ui-kicker">Solutions / Ecosystem</p>
+          <h1 className="ui-h1">ระบบนิเวศที่ออกแบบให้ทุกฝ่ายเติบโตได้โดยไม่ทับบทบาทกัน</h1>
           <p className="mt-6 max-w-3xl ui-p">
-            ecosystem ของ Gumon ออกแบบให้ทำงานจริงได้ในระยะยาว
-            ครอบคลุมทั้งเทคโนโลยี การมีส่วนร่วม และโอกาสธุรกิจของพาร์ตเนอร์
+            Gumon Ecosystem เชื่อมเทคโนโลยี การเรียนรู้ และเครือข่ายพาร์ตเนอร์ เพื่อให้การส่งมอบภาคสนามนำกลับมาพัฒนาระบบส่วนกลางได้อย่างต่อเนื่อง.
           </p>
         </Reveal>
 
         <div className="mt-12 grid md:grid-cols-2 gap-5">
-          {items.map((item, index) => (
+          {ecosystemPillars.map((item, index) => (
             <Reveal key={item.title} delay={index * 70}>
-              <div className="card p-6 shadow-soft h-full">
-                <p className="ui-kicker">ECOSYSTEM BUILDING BLOCK</p>
+              <div className="route-card h-full">
+                <p className="ui-kicker">Ecosystem Pillar</p>
                 <h2 className="mt-3 ui-h3">{item.title}</h2>
-                <p className="mt-3 text-sm md:text-base text-mist leading-relaxed">{item.body}</p>
+                <p className="mt-2 text-sm text-mist leading-relaxed">{item.body}</p>
               </div>
             </Reveal>
           ))}
         </div>
 
         <div className="mt-12 card p-7 shadow-soft">
-          <p className="ui-kicker">ก้าวถัดไป</p>
-          <h2 className="mt-3 ui-h2">เริ่มต่อยอดบน ecosystem ของ Gumon</h2>
-          <p className="mt-3 max-w-3xl text-sm md:text-base text-mist leading-relaxed">
-            เริ่มจากแนวทางที่กำหนดร่วมกัน เพื่อให้ทุกการต่อยอดเพิ่มคุณค่าให้แพลตฟอร์ม
-            และไม่ทำให้โครงสร้างหลักเสียสมดุล
-          </p>
+          <p className="ui-kicker">Field Impact</p>
+          <h2 className="mt-3 ui-h2">ตัวอย่างงานภาคสนามที่สะท้อนการทำงานของ ecosystem</h2>
+          <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {selectedWorks.map((item, index) => (
+              <Reveal key={item.src} delay={index * 40}>
+                <figure className="card p-2 shadow-soft overflow-hidden">
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-bg0/60 border border-line/20">
+                    <Image src={item.src} alt={item.title} fill className="h-full w-full object-cover" sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 90vw" />
+                  </div>
+                  <figcaption className="px-1 pt-3 pb-1">
+                    <div className="text-[11px] tracking-[0.2em] uppercase text-mist">{item.tag}</div>
+                    <div className="mt-1 text-sm font-medium leading-snug">{item.title}</div>
+                  </figcaption>
+                </figure>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-12 card p-7 shadow-soft">
+          <p className="ui-kicker">Next Action</p>
+          <h2 className="mt-3 ui-h2">ต้องการร่วมขับเคลื่อนในระบบนิเวศ Gumon</h2>
           <div className="mt-6 flex flex-col sm:flex-row gap-3">
-            <Link href="/contact" className="btn-primary">เริ่มคุยเรื่องการต่อยอด</Link>
-            <Link href="/company" className="btn-secondary">อ่านหลักการทำงานร่วมกัน</Link>
+            <Link href="/partners" className="btn-secondary">ดูแนวทางสำหรับพาร์ตเนอร์</Link>
+            <Link href="/contact" className="btn-primary">เริ่มคุยกับทีมงาน</Link>
           </div>
         </div>
       </div>

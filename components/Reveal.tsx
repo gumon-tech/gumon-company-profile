@@ -1,5 +1,6 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import { useEffect, useRef, useState } from "react";
 
 export default function Reveal({
@@ -45,11 +46,15 @@ export default function Reveal({
     return () => io.disconnect();
   }, []);
 
+  const style = {
+    "--revealDelay": `${delay}ms`,
+  } as CSSProperties;
+
   return (
     <div
       ref={ref}
       className={["reveal", on ? "reveal-on" : "reveal-off", className].join(" ")}
-      style={{ ["--revealDelay" as any]: `${delay}ms` }}
+      style={style}
     >
       {children}
     </div>

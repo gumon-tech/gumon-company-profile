@@ -1,70 +1,86 @@
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "พาร์ตเนอร์",
+export const metadata = buildPageMetadata({
+  title: "Partners",
   description:
-    "แนวทางทำงานร่วมกับพาร์ตเนอร์ของ Gumon ที่เน้นบทบาทชัดเจน ความเชื่อมั่นระยะยาว และการส่งมอบที่ขยายได้",
-};
+    "แนวทางความร่วมมือสำหรับพาร์ตเนอร์ที่ต้องการขยายงานส่งมอบบนมาตรฐานเดียวกับ Gumon",
+  path: "/partners",
+});
 
-const sections = [
+const partnerModel = [
   {
-    title: "พาร์ตเนอร์ที่เหมาะสม",
-    body:
-      "เหมาะกับองค์กรที่มีภารกิจส่งมอบงานให้ลูกค้าอย่างต่อเนื่อง เช่น SI ทีมที่ปรึกษาซอฟต์แวร์ และทีมวางระบบคลาวด์",
+    title: "Platform by Gumon",
+    body: "Gumon พัฒนาแกนเทคโนโลยี เอกสาร และแนวปฏิบัติร่วม",
   },
   {
-    title: "ประโยชน์ที่พาร์ตเนอร์ได้รับ",
-    body:
-      "เริ่มงานได้เร็วขึ้น ลดต้นทุนงานซ้ำ และมีมาตรฐานร่วมที่ช่วยให้ส่งมอบงานได้สม่ำเสมอ",
+    title: "Delivery by Partners",
+    body: "พาร์ตเนอร์รับผิดชอบ solution design, implementation และผลลัพธ์เชิงธุรกิจของลูกค้า",
   },
   {
-    title: "โมเดลการทำงานร่วมกัน",
-    body:
-      "Gumon ดูแลแกนแพลตฟอร์มและมาตรฐาน ส่วนพาร์ตเนอร์โฟกัสงานลูกค้า การปรับใช้ และผลลัพธ์ทางธุรกิจ",
+    title: "Enablement Together",
+    body: "ยกระดับทีมผ่าน playbook, support flow และ learning path ร่วมกัน",
   },
-  {
-    title: "ขอบเขตเชิงพาณิชย์",
-    body:
-      "Gumon ไม่รับงานที่แข่งขันตรงกับพาร์ตเนอร์ เพื่อรักษาความเชื่อมั่นและความยั่งยืนของความร่วมมือ",
-  },
+];
+
+const readinessChecklist = [
+  "มีทีมส่งมอบหรือทีมที่ปรึกษาที่ดูแลโครงการลูกค้าอย่างต่อเนื่อง",
+  "มี capability ด้าน architecture, implementation, และ operation",
+  "พร้อมทำงานบนมาตรฐานการส่งมอบร่วม (shared delivery standards)",
+  "ต้องการขยายงานหลายโครงการโดยควบคุมคุณภาพได้",
 ];
 
 export default function Page() {
   return (
     <section className="ui-section">
+      <BreadcrumbJsonLd items={[{ name: "Partners", path: "/partners" }]} />
       <div className="ui-container">
         <Reveal>
-          <p className="ui-kicker">สำหรับพาร์ตเนอร์</p>
-          <h1 className="ui-h1">โตไปด้วยกันบนบทบาทที่ชัดเจน</h1>
+          <p className="ui-kicker">Audience / Partners</p>
+          <h1 className="ui-h1">ขยายงานเชิงพาณิชย์บนระบบที่มีขอบเขตบทบาทชัดเจน</h1>
           <p className="mt-6 max-w-3xl ui-p">
-            Gumon เป็นฐานเทคโนโลยีให้พาร์ตเนอร์ต่อยอดงานลูกค้าได้เร็วขึ้น
-            และรักษามาตรฐานเดียวกันในทุกโครงการ
+            Gumon ยึดหลัก Partner-only ในงานส่งมอบปลายทาง เพื่อให้พาร์ตเนอร์เติบโตได้อย่างมั่นใจบนแพลตฟอร์มและมาตรฐานเดียวกัน.
           </p>
         </Reveal>
 
-        <div className="mt-12 grid md:grid-cols-2 gap-5">
-          {sections.map((section, index) => (
-            <Reveal key={section.title} delay={index * 70}>
-              <div className="card p-6 shadow-soft h-full">
-                <p className="ui-kicker">แนวทางความร่วมมือ</p>
-                <h2 className="mt-3 ui-h3">{section.title}</h2>
-                <p className="mt-3 text-sm md:text-base text-mist leading-relaxed">{section.body}</p>
+        <div className="mt-12 grid md:grid-cols-3 gap-5">
+          {partnerModel.map((item, index) => (
+            <Reveal key={item.title} delay={index * 70}>
+              <div className="route-card h-full">
+                <p className="ui-kicker">Collaboration Model</p>
+                <h2 className="mt-3 ui-h3">{item.title}</h2>
+                <p className="mt-2 text-sm text-mist leading-relaxed">{item.body}</p>
               </div>
             </Reveal>
           ))}
         </div>
 
-        <div className="mt-12 card p-7 shadow-soft">
-          <p className="ui-kicker">ขั้นตอนเริ่มต้น</p>
-          <h2 className="mt-3 ui-h2">วางแผนร่วมกันก่อนลงมือจริง</h2>
-          <p className="mt-3 max-w-3xl text-sm md:text-base text-mist leading-relaxed">
-            ทีมงานช่วยประเมินความพร้อม วางกรอบการทำงาน
-            และจัดแนวทางส่งมอบให้เหมาะกับบริบทธุรกิจของพาร์ตเนอร์
-          </p>
-          <div className="mt-6 flex flex-col sm:flex-row gap-3">
-            <Link href="/contact" className="btn-primary">สมัครเป็นพาร์ตเนอร์</Link>
-            <Link href="/contact" className="btn-secondary">คุยกับทีมพาร์ตเนอร์</Link>
+        <div className="mt-12 grid lg:grid-cols-12 gap-6">
+          <div className="lg:col-span-7 card p-7 shadow-soft">
+            <p className="ui-kicker">Partner Readiness</p>
+            <h2 className="mt-3 ui-h2">เกณฑ์ความพร้อมเบื้องต้นสำหรับการเริ่มความร่วมมือ</h2>
+            <ul className="mt-5 grid gap-2 feature-list">
+              {readinessChecklist.map((item) => (
+                <li key={item}>- {item}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="lg:col-span-5 card p-7 shadow-soft">
+            <p className="ui-kicker">Enablement</p>
+            <h2 className="mt-3 ui-h3">สิ่งที่พาร์ตเนอร์จะได้รับ</h2>
+            <ul className="mt-4 grid gap-2 feature-list">
+              <li>- คู่มือการส่งมอบบนมาตรฐานเดียวกัน</li>
+              <li>- แนวทาง support escalation ที่ชัดเจน</li>
+              <li>- เส้นทางฝึกอบรมและรับรองทักษะผ่าน DKS Center</li>
+              <li>- ฐานความรู้ร่วมสำหรับการแก้ปัญหาในงานจริง</li>
+            </ul>
+            <div className="mt-6 flex flex-col gap-3">
+              <a href="https://wiki.gumon.io/" target="_blank" rel="noreferrer" className="btn-secondary">เปิด Knowledge Base</a>
+              <Link href="/contact" className="btn-primary">คุยกับทีมพาร์ตเนอร์</Link>
+            </div>
           </div>
         </div>
       </div>

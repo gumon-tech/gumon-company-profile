@@ -2,148 +2,179 @@
 @tailwind components;
 @tailwind utilities;
 
-/* =========================================================
-   Gumon Visual System v1 — Institutional Platform Authority
-   Tokens are semantic and mapped in tailwind.config.js
-   ========================================================= */
-
-:root{
+:root {
   color-scheme: dark;
 
-  /* Base surfaces (RGB triplets) */
-  --bg0: 14 17 22;     /* page */
-  --bg1: 18 24 32;     /* cards */
-  --surf: 21 30 36;    /* elevated / panels */
+  --bg0: 11 16 22;
+  --bg1: 16 24 32;
+  --surf: 22 34 44;
 
-  /* Text */
-  --ink: 214 219 216;
-  --mist: 151 162 160;
+  --ink: 223 230 228;
+  --mist: 149 164 165;
+  --line: 205 219 221;
 
-  /* Lines */
-  --line: 214 219 216; /* use with alpha in tailwind (line/xx) */
+  --accent: 128 188 170;
+  --accent2: 230 167 89;
 
-  /* Accent (institutional olive) */
-  --accent: 143 175 156;
-  --accent2: 143 175 156;
+  --info: 148 194 221;
+  --warn: 227 190 115;
+  --danger: 203 111 111;
 
-  /* Signals (muted) */
-  --info: 156 184 208;
-  --warn: 192 165 104;
-  --danger: 196 105 105;
+  --font-body: "Sarabun", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Space Grotesk", "Sarabun", ui-sans-serif, system-ui, sans-serif;
 }
 
-html, body { height: 100%; }
-html { scroll-behavior: smooth; }
+html,
+body {
+  height: 100%;
+}
 
-body{
+html {
+  scroll-behavior: smooth;
+}
+
+body {
   background: rgb(var(--bg0));
   color: rgb(var(--ink));
   min-height: 100dvh;
   overflow-x: hidden;
+  font-family: var(--font-body);
 }
 
-/* =========================================================
-   Context Modes (subtle tinting only)
-   ========================================================= */
-:root{
-  --veilA: rgba(143,175,156,0.10);
-  --veilB: rgba(214,219,216,0.06);
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
 }
 
-/* Default = Institutional */
-[data-mode="institutional"]{
-  --accent: 143 175 156;
-  --accent2: 143 175 156;
-  --veilA: rgba(143,175,156,0.10);
-  --veilB: rgba(214,219,216,0.06);
+:root {
+  --veilA: rgba(128, 188, 170, 0.1);
+  --veilB: rgba(230, 167, 89, 0.08);
 }
 
-/* Field / Execution (cool neutral) */
-[data-mode="field"]{
-  --accent: 214 219 216;
-  --accent2: 214 219 216;
-  --veilA: rgba(214,219,216,0.08);
-  --veilB: rgba(0,0,0,0.00);
+[data-mode="institutional"] {
+  --accent: 128 188 170;
+  --accent2: 230 167 89;
+  --veilA: rgba(128, 188, 170, 0.1);
+  --veilB: rgba(230, 167, 89, 0.08);
 }
 
-/* Research / Lab (slightly stronger olive) */
-[data-mode="lab"]{
-  --accent: 143 175 156;
-  --accent2: 143 175 156;
-  --veilA: rgba(143,175,156,0.14);
-  --veilB: rgba(214,219,216,0.05);
+[data-mode="field"] {
+  --accent: 208 220 223;
+  --accent2: 208 220 223;
+  --veilA: rgba(208, 220, 223, 0.08);
+  --veilB: rgba(0, 0, 0, 0);
 }
 
-/* Utilities based on mode */
-.text-accent{ color: rgb(var(--accent)); }
-.border-accent{ border-color: rgb(var(--accent2) / 0.28); }
-.decoration-accent{ text-decoration-color: rgb(var(--accent2) / 0.28); }
+[data-mode="lab"] {
+  --accent: 147 196 176;
+  --accent2: 240 180 111;
+  --veilA: rgba(147, 196, 176, 0.15);
+  --veilB: rgba(240, 180, 111, 0.07);
+}
 
-/* =========================================================
-   Layout Utilities
-   ========================================================= */
-.ui-container{ @apply mx-auto max-w-[1240px] px-5 md:px-8; }
-.ui-section{ @apply py-14 md:py-24; }
-.ui-section-tight{ @apply py-12 md:py-20; }
+.text-accent {
+  color: rgb(var(--accent));
+}
 
-.ui-kicker{ @apply text-[11px] tracking-[0.12em] text-mist; }
-.ui-h1{ @apply mt-4 text-4xl md:text-6xl font-semibold leading-[1.05] tracking-[-0.02em]; }
-.ui-h2{ @apply text-2xl md:text-4xl font-semibold leading-tight tracking-[-0.01em]; }
-.ui-h3{ @apply text-lg md:text-xl font-semibold leading-snug; }
-.ui-p{ @apply text-base md:text-lg text-ink/90 leading-relaxed; }
-.ui-small{ @apply text-[13px] text-mist leading-relaxed; }
+.border-accent {
+  border-color: rgb(var(--accent2) / 0.4);
+}
 
-.glass{
-  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+.decoration-accent {
+  text-decoration-color: rgb(var(--accent2) / 0.42);
+}
+
+.ui-container {
+  @apply mx-auto max-w-[1240px] px-5 md:px-8;
+}
+
+.ui-section {
+  @apply py-14 md:py-24;
+}
+
+.ui-section-tight {
+  @apply py-10 md:py-16;
+}
+
+.ui-kicker {
+  @apply text-[11px] tracking-[0.14em] uppercase text-mist;
+}
+
+.ui-h1 {
+  @apply mt-4 text-4xl md:text-6xl font-semibold leading-[1.04] tracking-[-0.02em];
+}
+
+.ui-h2 {
+  @apply text-2xl md:text-4xl font-semibold leading-tight tracking-[-0.015em];
+}
+
+.ui-h3 {
+  @apply text-lg md:text-xl font-semibold leading-snug;
+}
+
+.ui-p {
+  @apply text-base md:text-lg text-ink/90 leading-relaxed;
+}
+
+.ui-small {
+  @apply text-[13px] text-mist leading-relaxed;
+}
+
+.glass {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015));
   border: 1px solid rgb(var(--line) / 0.12);
 }
 
-.card{
+.card {
   @apply rounded-xl2 border border-line/20 bg-bg1/60;
 }
 
-.hr{
+.hr {
   height: 1px;
   background: rgb(var(--line) / 0.12);
 }
 
-/* =========================================================
-   Background (subtle structural haze + grid)
-   ========================================================= */
-.grid-overlay{
+.grid-overlay {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: -1;
   background-image:
-    linear-gradient(to right, rgba(214,219,216,0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(214,219,216,0.04) 1px, transparent 1px);
-  background-size: 72px 72px;
-  mask-image: radial-gradient(closest-side at 50% 26%, rgba(0,0,0,0.9), rgba(0,0,0,0));
-  opacity: 0.55;
+    linear-gradient(to right, rgba(214, 219, 216, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(214, 219, 216, 0.04) 1px, transparent 1px);
+  background-size: 70px 70px;
+  mask-image: radial-gradient(closest-side at 50% 18%, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0));
+  opacity: 0.6;
 }
 
-.bg-veil{
+.bg-veil {
   position: fixed;
   inset: 0;
   z-index: -2;
   background:
-    radial-gradient(900px 460px at 20% 8%, var(--veilA), rgba(0,0,0,0)),
-    radial-gradient(760px 520px at 78% 16%, var(--veilB), rgba(0,0,0,0)),
-    linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.40) 100%);
+    radial-gradient(860px 460px at 18% 8%, var(--veilA), rgba(0, 0, 0, 0)),
+    radial-gradient(760px 520px at 82% 18%, var(--veilB), rgba(0, 0, 0, 0)),
+    linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.36) 100%);
 }
 
-/* =========================================================
-   Logo swap (mode-aware)
-   ========================================================= */
-.logo-swap{
+.logo-swap {
   position: relative;
   width: 36px;
   height: 36px;
   display: inline-grid;
   place-items: center;
 }
-.logo-swap img{
+
+.logo-swap > span {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 36px !important;
+  height: 36px !important;
+}
+
+.logo-swap img {
   position: absolute;
   inset: 0;
   width: 36px;
@@ -151,25 +182,44 @@ body{
   object-fit: contain;
   display: none;
 }
-[data-mode="institutional"] .logo-inst{ display: block; }
-[data-mode="field"] .logo-field{ display: block; }
-[data-mode="lab"] .logo-lab{ display: block; }
 
-/* =========================================================
-   Motion (restrained)
-   ========================================================= */
-.reveal{
+[data-mode="institutional"] .logo-inst {
+  display: block;
+}
+
+[data-mode="field"] .logo-field {
+  display: block;
+}
+
+[data-mode="lab"] .logo-lab {
+  display: block;
+}
+
+.reveal {
   will-change: transform, opacity;
   transition:
-    opacity 520ms cubic-bezier(.2,.8,.2,1),
-    transform 520ms cubic-bezier(.2,.8,.2,1),
-    filter 520ms cubic-bezier(.2,.8,.2,1);
+    opacity 520ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 520ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    filter 520ms cubic-bezier(0.2, 0.8, 0.2, 1);
   transition-delay: var(--revealDelay, 0ms);
 }
-.reveal-off{ opacity: 0; transform: translateY(12px); filter: blur(6px); }
-.reveal-on{ opacity: 1; transform: translateY(0); filter: blur(0); }
-@media (prefers-reduced-motion: reduce){
-  .reveal, .reveal-off, .reveal-on{
+
+.reveal-off {
+  opacity: 0;
+  transform: translateY(12px);
+  filter: blur(6px);
+}
+
+.reveal-on {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-off,
+  .reveal-on {
     transition: none !important;
     opacity: 1 !important;
     transform: none !important;
@@ -177,37 +227,44 @@ body{
   }
 }
 
-/* =========================================================
-   Platform primitives
-   ========================================================= */
-a.mode-link{ text-decoration-color: rgb(var(--accent2) / 0.28); }
-
-.codeblock{
-  border: 1px solid rgb(var(--line) / 0.14);
-  background: rgba(14,17,22,0.55);
-  border-radius: 16px;
-  padding: 14px 14px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 13px;
-  line-height: 1.55;
-  overflow-x: auto;
-}
-
-
-/* =========================================================
-   Component primitives (utility classes)
-   ========================================================= */
-@layer components{
-  .btn-base{
+@layer components {
+  .btn-base {
     @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition border;
   }
-  .btn-primary{
+
+  .btn-primary {
     @apply btn-base border-transparent bg-accent text-bg0 hover:bg-accent/90;
   }
-  .btn-secondary{
+
+  .btn-secondary {
     @apply btn-base border-line bg-bg1 text-ink hover:bg-bg1/80;
   }
-  .btn-ghost{
+
+  .btn-ghost {
     @apply inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-mist hover:text-ink hover:bg-bg1/50 transition;
+  }
+
+  .partner-item {
+    @apply rounded-xl border border-line/20 bg-bg1/40 p-4 flex items-center gap-3;
+  }
+
+  .partner-logo-wrap {
+    @apply h-12 w-20 shrink-0 rounded-lg border border-line/20 bg-bg1/70 grid place-items-center overflow-hidden px-1;
+  }
+
+  .partner-logo {
+    @apply h-10 w-full object-contain;
+  }
+
+  .partner-logo-fallback {
+    @apply h-9 w-9 rounded-md bg-accent/20 text-accent text-xs font-semibold tracking-[0.08em] grid place-items-center;
+  }
+
+  .route-card {
+    @apply rounded-xl2 border border-line/20 bg-surf/30 p-6 transition hover:border-accent/50 hover:bg-surf/45;
+  }
+
+  .feature-list li {
+    @apply text-sm text-mist leading-relaxed;
   }
 }

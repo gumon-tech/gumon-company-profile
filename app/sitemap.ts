@@ -3,16 +3,24 @@ export const dynamic = "force-static";
 export default function sitemap() {
   const base = process.env.NEXT_PUBLIC_SITE_URL ?? "https://web.gumon.dev";
   const now = new Date();
+  const weekly = "weekly" as const;
+  const monthly = "monthly" as const;
+
   return [
-    { url: `${base}/`, lastModified: now },
-    { url: `${base}/platform/`, lastModified: now },
-    { url: `${base}/partners/`, lastModified: now },
-    { url: `${base}/developers/`, lastModified: now },
-    { url: `${base}/ecosystem/`, lastModified: now },
-    { url: `${base}/learning/`, lastModified: now },
-    { url: `${base}/resources/`, lastModified: now },
-    { url: `${base}/company/`, lastModified: now },
-    { url: `${base}/investors/`, lastModified: now },
-    { url: `${base}/contact/`, lastModified: now },
+    { url: `${base}/`, lastModified: now, changeFrequency: weekly, priority: 1.0 },
+    { url: `${base}/platform/`, lastModified: now, changeFrequency: weekly, priority: 0.9 },
+    { url: `${base}/developers/`, lastModified: now, changeFrequency: weekly, priority: 0.9 },
+    { url: `${base}/partners/`, lastModified: now, changeFrequency: weekly, priority: 0.9 },
+    { url: `${base}/ecosystem/`, lastModified: now, changeFrequency: weekly, priority: 0.85 },
+    { url: `${base}/learning/`, lastModified: now, changeFrequency: weekly, priority: 0.8 },
+    { url: `${base}/resources/`, lastModified: now, changeFrequency: weekly, priority: 0.8 },
+    { url: `${base}/company/`, lastModified: now, changeFrequency: monthly, priority: 0.75 },
+    { url: `${base}/team/`, lastModified: now, changeFrequency: monthly, priority: 0.7 },
+    { url: `${base}/investors/`, lastModified: now, changeFrequency: weekly, priority: 0.75 },
+    { url: `${base}/contact/`, lastModified: now, changeFrequency: monthly, priority: 0.7 },
+    { url: `${base}/faq/`, lastModified: now, changeFrequency: monthly, priority: 0.65 },
+    { url: `${base}/privacy/`, lastModified: now, changeFrequency: monthly, priority: 0.5 },
+    { url: `${base}/terms/`, lastModified: now, changeFrequency: monthly, priority: 0.5 },
+    { url: `${base}/cookies/`, lastModified: now, changeFrequency: monthly, priority: 0.5 },
   ];
 }
