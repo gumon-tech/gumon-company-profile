@@ -8,7 +8,7 @@ type BuildPageMetadataArgs = {
 };
 
 const SITE_NAME = "Gumon Technology";
-const DEFAULT_OG_IMAGE = "/assets/from-gumon/gumon_arc.png";
+const DEFAULT_OG_IMAGE = "/assets/social/og-share-en.png";
 
 const BASE_KEYWORDS = [
   "Gumon Technology",

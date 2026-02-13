@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     url: "/",
     images: [
       {
-        url: "/assets/from-gumon/gumon_arc.png",
+        url: "/assets/social/og-share-en.png",
         alt: "Gumon Technology",
       },
     ],
@@ -77,7 +77,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: layoutCopy.siteName,
     description: layoutCopy.metadata.twitterDescription,
-    images: ["/assets/from-gumon/gumon_arc.png"],
+    images: ["/assets/social/og-share-en.png"],
   },
 };
 
@@ -88,6 +88,38 @@ export default function RootLayout({
 }>) {
   const defaultLocaleMeta = getLocaleMeta(defaultLocale);
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gumon.io";
+  const normalizedSiteUrl = siteUrl.endsWith("/") ? siteUrl.slice(0, -1) : siteUrl;
+  const shareUrl = `${normalizedSiteUrl}/en`;
+  const shareMessage = "Open Platform for Delivery Teams. Deliver faster with clear standards and predictable outcomes.";
+  const encodedShareUrl = encodeURIComponent(shareUrl);
+  const encodedShareText = encodeURIComponent(`${shareMessage} ${shareUrl}`);
+  const encodedFacebookQuote = encodeURIComponent(shareMessage);
+  const socialShareLinks = [
+    {
+      href: `https://www.facebook.com/sharer/sharer.php?u=${encodedShareUrl}&quote=${encodedFacebookQuote}`,
+      icon: "/assets/social/facebook.svg",
+      label: "Share on Facebook",
+      iconClassName: "brightness-0 invert",
+    },
+    {
+      href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedShareUrl}`,
+      icon: "/assets/social/linkedin.svg",
+      label: "Share on LinkedIn",
+      iconClassName: "brightness-0 invert",
+    },
+    {
+      href: `https://social-plugins.line.me/lineit/share?url=${encodedShareUrl}`,
+      icon: "/assets/social/line.svg",
+      label: "Share on LINE",
+      iconClassName: "brightness-0 invert",
+    },
+    {
+      href: `https://api.whatsapp.com/send?text=${encodedShareText}`,
+      icon: "/assets/social/whatsapp.svg",
+      label: "Share on WhatsApp",
+      iconClassName: "brightness-0 invert",
+    },
+  ];
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
@@ -274,15 +306,47 @@ export default function RootLayout({
                   <FooterLegalLine />
                 </div>
               </div>
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-                <TrackedLink href="/faq" className="hover:text-ink transition">{layoutCopy.faqLabel}</TrackedLink>
-                <TrackedLink href="/company#legal-information" className="hover:text-ink transition">{layoutCopy.companyInfoLink}</TrackedLink>
-                {legalLinks.map((item) => (
-                  <TrackedLink key={item.href} href={item.href} className="hover:text-ink transition">
-                    {item.label}
-                  </TrackedLink>
-                ))}
-                <TrackedLink href="mailto:contact@gumon.io" className="hover:text-ink transition">{layoutCopy.contactEmail}</TrackedLink>
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-3 md:justify-end">
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                  <TrackedLink href="/faq" className="hover:text-ink transition">{layoutCopy.faqLabel}</TrackedLink>
+                  <TrackedLink href="/company#legal-information" className="hover:text-ink transition">{layoutCopy.companyInfoLink}</TrackedLink>
+                  <TrackedLink href="mailto:contact@gumon.io" className="hover:text-ink transition">{layoutCopy.contactEmail}</TrackedLink>
+                </div>
+
+                <span aria-hidden className="hidden md:inline-block h-3 w-px bg-line/45" />
+
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                  {legalLinks.map((item) => (
+                    <TrackedLink key={item.href} href={item.href} className="hover:text-ink transition">
+                      {item.label}
+                    </TrackedLink>
+                  ))}
+                </div>
+
+                <span aria-hidden className="hidden md:inline-block h-3 w-px bg-line/45" />
+
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] uppercase tracking-[0.16em] text-mist">Share</span>
+                  {socialShareLinks.map((item) => (
+                    <TrackedLink
+                      key={item.href}
+                      href={item.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={item.label}
+                      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-line/70 bg-bg0/90 hover:border-ink/40 hover:bg-bg1 transition"
+                    >
+                      <Image
+                        src={item.icon}
+                        alt=""
+                        width={17}
+                        height={17}
+                        aria-hidden
+                        className={item.iconClassName}
+                      />
+                    </TrackedLink>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

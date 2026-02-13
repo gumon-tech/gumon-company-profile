@@ -28,7 +28,7 @@ export const supportedLocales = [
 
 export type Locale = (typeof supportedLocales)[number];
 
-export const defaultLocale: Locale = "th";
+export const defaultLocale: Locale = "en";
 export const fallbackLocale: Locale = "en";
 
 const localeSet = new Set<string>(supportedLocales);
