@@ -33,6 +33,7 @@ jobs:
       - name: Release Checks (includes build)
         env:
           NEXT_PUBLIC_SITE_URL: https://gumon.io
+          NEXT_PUBLIC_GA_MEASUREMENT_ID: G-GBBVZBPTHQ
         run: npm run check:release
 
       - name: Upload artifact
