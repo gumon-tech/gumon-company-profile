@@ -9,6 +9,7 @@
     "lint": "next lint",
     "check:i18n": "node scripts/check-i18n-readiness.mjs",
     "i18n:freeze": "node scripts/freeze-locales.mjs",
+    "i18n:translate-all": "node scripts/generate-auto-translations.mjs",
     "check:ia": "node scripts/check-ia-links.mjs",
     "check:release": "npm run check:ia && npm run check:i18n && npm run lint && npm run build",
     "optimize:team-images": "bash scripts/optimize-team-images.sh"

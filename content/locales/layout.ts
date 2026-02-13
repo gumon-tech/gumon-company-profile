@@ -1,4 +1,5 @@
 import type { Locale } from "@/lib/i18n";
+import { translateDeep } from "@/lib/autoTranslate";
 
 type MetadataCopy = {
   defaultTitle: string;
@@ -75,7 +76,9 @@ export const layoutCopyByLocale: Record<"th" | "en", LayoutCopy> = {
 };
 
 export function getLayoutCopy(locale: Locale) {
-  return locale === "th" ? layoutCopyByLocale.th : layoutCopyByLocale.en;
+  if (locale === "th") return layoutCopyByLocale.th;
+  if (locale === "en") return layoutCopyByLocale.en;
+  return translateDeep(locale, layoutCopyByLocale.en);
 }
 
 export const layoutCopy = layoutCopyByLocale.en;

@@ -26,5 +26,5 @@ const fallbackNoticeByLocale: Partial<Record<Locale, string>> = {
 
 export function getFallbackNotice(locale: Locale): string | null {
   if (locale === "th" || locale === "en") return null;
-  return fallbackNoticeByLocale[locale] ?? null;
+  return null;
 }
