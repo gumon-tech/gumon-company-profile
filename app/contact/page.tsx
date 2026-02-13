@@ -61,8 +61,22 @@ export default function ContactPage() {
         <p className="ui-kicker">Contact / Start Here</p>
         <h1 className="ui-h1">คุยกับทีม Gumon เพื่อเริ่มโครงการให้เร็วและตรงเป้าหมาย</h1>
         <p className="mt-6 max-w-2xl ui-p">
-          ระบุโจทย์ของคุณสั้น ๆ แล้วส่งผ่านฟอร์มได้ทันที ทีมจะติดต่อกลับพร้อมแนวทางที่เหมาะกับบริบทองค์กร.
+          ระบุโจทย์ของคุณสั้น ๆ แล้วส่งผ่านฟอร์มได้ทันที ทีมจะติดต่อกลับพร้อมแนวทางที่เหมาะกับองค์กรของคุณ.
         </p>
+        <div className="mt-6 grid gap-3 md:grid-cols-3">
+          <div className="glass rounded-xl border border-line/35 p-4">
+            <div className="text-[11px] tracking-[0.16em] uppercase text-mist">เวลาตอบกลับ</div>
+            <div className="mt-2 text-sm text-ink font-medium">ตอบกลับครั้งแรกโดยทั่วไปภายใน 1 วันทำการ</div>
+          </div>
+          <div className="glass rounded-xl border border-line/35 p-4">
+            <div className="text-[11px] tracking-[0.16em] uppercase text-mist">รูปแบบการให้คำแนะนำ</div>
+            <div className="mt-2 text-sm text-ink font-medium">ได้รับแนวทางเริ่มต้นที่เชื่อมกับโจทย์ธุรกิจและเทคนิค</div>
+          </div>
+          <div className="glass rounded-xl border border-line/35 p-4">
+            <div className="text-[11px] tracking-[0.16em] uppercase text-mist">ขอบเขตที่ครอบคลุม</div>
+            <div className="mt-2 text-sm text-ink font-medium">ครอบคลุมทั้งประเมินระบบเดิมและแผนส่งมอบ</div>
+          </div>
+        </div>
 
         <div className="mt-12 grid md:grid-cols-3 gap-5">
           {routes.map((item) => (
@@ -83,6 +97,11 @@ export default function ContactPage() {
             <p className="mt-3 text-sm text-mist leading-relaxed">
               ยิ่งข้อมูลชัด ทีมยิ่งประเมินและตอบกลับได้เร็ว ทั้งด้านเทคนิค แผนส่งมอบ และการร่วมงานเชิงธุรกิจ.
             </p>
+            <ul className="mt-4 grid gap-2 text-sm text-mist">
+              <li>- ปัญหาหลักที่ต้องการแก้ใน 1-2 ไตรมาสข้างหน้า</li>
+              <li>- ข้อมูลระบบเดิมหรือข้อจำกัดที่มีผลต่อการส่งมอบ</li>
+              <li>- ผลลัพธ์ทางธุรกิจที่อยากเห็นหลังเริ่มโครงการ</li>
+            </ul>
             <div className="mt-6">
               <ContactLeadForm />
             </div>

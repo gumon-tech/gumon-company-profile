@@ -1,7 +1,7 @@
 export const dynamic = "force-static";
 
 export default function sitemap() {
-  const base = process.env.NEXT_PUBLIC_SITE_URL ?? "https://web.gumon.dev";
+  const base = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gumon.io";
   const now = new Date();
   const weekly = "weekly" as const;
   const monthly = "monthly" as const;

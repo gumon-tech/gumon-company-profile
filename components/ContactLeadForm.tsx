@@ -16,9 +16,9 @@ export default function ContactLeadForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const topicLabel = useMemo(() => {
-    if (topic === "partner") return "Partner Collaboration";
-    if (topic === "business") return "General Inquiry";
-    return "Technical Consultation";
+    if (topic === "partner") return "ความร่วมมือกับพาร์ตเนอร์";
+    if (topic === "business") return "สอบถามข้อมูลทั่วไป";
+    return "ปรึกษาด้านเทคนิค";
   }, [topic]);
 
   const buildMailtoHref = (payloadMessage: string) => {
@@ -131,9 +131,9 @@ export default function ContactLeadForm() {
           onChange={(e) => setTopic(e.target.value)}
           className="rounded-lg border border-line/40 bg-bg1/80 px-3 py-2 text-sm text-ink outline-none focus:border-accent/70"
         >
-          <option value="technical">Technical Consultation</option>
-          <option value="partner">Partner Collaboration</option>
-          <option value="business">General Inquiry</option>
+          <option value="technical">ปรึกษาด้านเทคนิค</option>
+          <option value="partner">ความร่วมมือกับพาร์ตเนอร์</option>
+          <option value="business">สอบถามข้อมูลทั่วไป</option>
         </select>
       </div>
 
@@ -146,7 +146,7 @@ export default function ContactLeadForm() {
           onChange={(e) => setMessage(e.target.value)}
           rows={5}
           className="rounded-lg border border-line/40 bg-bg1/80 px-3 py-2 text-sm text-ink outline-none focus:border-accent/70"
-          placeholder="เล่าบริบทระบบหรือความต้องการของทีมคุณ"
+          placeholder="เล่าระบบปัจจุบัน ปัญหาหลัก และเป้าหมายที่ต้องการ"
         />
       </div>
 
@@ -157,8 +157,7 @@ export default function ContactLeadForm() {
         {isSubmitting ? "กำลังส่ง..." : "ส่งคำขอ"}
       </button>
       <p className="text-xs text-mist">
-        หากตั้งค่า `NEXT_PUBLIC_CONTACT_WEBHOOK_URL` ระบบจะส่งเข้า webhook ก่อน
-        และจะ fallback ไปอีเมลอัตโนมัติหากส่งไม่สำเร็จ
+        ข้อมูลของคุณจะถูกใช้เพื่อการติดต่อกลับและการประเมินแนวทางเริ่มต้นเท่านั้น
       </p>
     </form>
   );

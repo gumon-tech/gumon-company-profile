@@ -2,12 +2,28 @@ import "./globals.css";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { Sarabun, Space_Grotesk } from "next/font/google";
 import NavLink from "@/components/NavLink";
 import CookieConsentBanner from "@/components/CookieConsentBanner";
 import TrackedLink from "@/components/TrackedLink";
+import MobileStickyCta from "@/components/MobileStickyCta";
+
+const sarabun = Sarabun({
+  subsets: ["thai", "latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-sarabun",
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-space-grotesk",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://web.gumon.dev"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://gumon.io"),
   title: {
     default: "Gumon Technology | Open Platform for Delivery Teams",
     template: "%s | Gumon Technology",
@@ -68,7 +84,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://web.gumon.dev";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gumon.io";
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
@@ -102,7 +118,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="th">
+    <html lang="th" className={`${sarabun.variable} ${spaceGrotesk.variable}`}>
       <body data-mode="institutional">
         <script
           type="application/ld+json"
@@ -112,7 +128,7 @@ export default function RootLayout({
         <div className="bg-veil" />
         <div className="grid-overlay" />
 
-        <header className="sticky top-0 z-50 border-b border-line/30 backdrop-blur supports-[backdrop-filter]:bg-bg0/78">
+        <header className="sticky top-0 z-[90] border-b border-line/60 bg-bg0/92 shadow-[0_10px_24px_rgba(3,6,12,0.45)] supports-[backdrop-filter]:bg-bg0/84 supports-[backdrop-filter]:backdrop-blur-xl">
           <div className="ui-container h-16 lg:h-[72px] flex items-center justify-between gap-3">
             <Link href="/" className="flex items-center gap-3">
               <span className="logo-swap" aria-label="Gumon mark">
@@ -128,17 +144,17 @@ export default function RootLayout({
               </div>
             </Link>
 
-            <nav className="hidden xl:flex items-center gap-4 text-sm text-mist">
+            <nav className="hidden xl:flex items-center gap-4 text-sm text-ink/90">
               {navItems.map((item) => (
                 <NavLink key={item.href} href={item.href} label={item.label} />
               ))}
             </nav>
 
-            <details className="xl:hidden relative z-[70]">
+            <details className="mobile-menu xl:hidden">
               <summary className="btn-ghost px-3 py-1.5 list-none cursor-pointer [&::-webkit-details-marker]:hidden">
                 เมนู
               </summary>
-              <div className="absolute right-0 top-[calc(100%+10px)] w-[290px] rounded-xl2 border border-line/25 bg-bg0/95 p-3 shadow-soft backdrop-blur-md">
+              <div className="mobile-menu-panel">
                 <div className="grid gap-3 text-sm">
                   {navItems.map((item) => (
                     <TrackedLink
@@ -150,6 +166,22 @@ export default function RootLayout({
                     </TrackedLink>
                   ))}
                   <div className="hr" />
+                  <TrackedLink
+                    href="https://docs.gumon.io/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rounded-lg px-3 py-2 text-mist hover:text-ink hover:bg-bg1/60 transition"
+                  >
+                    Docs
+                  </TrackedLink>
+                  <TrackedLink
+                    href="https://wiki.gumon.io/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rounded-lg px-3 py-2 text-mist hover:text-ink hover:bg-bg1/60 transition"
+                  >
+                    Knowledge Base
+                  </TrackedLink>
                   <TrackedLink href="/contact" className="btn-primary w-full">
                     ติดต่อทีมงาน
                   </TrackedLink>
@@ -172,6 +204,7 @@ export default function RootLayout({
         </header>
 
         <main>{children}</main>
+        <MobileStickyCta />
 
         <footer className="border-t border-line/20">
           <div className="ui-container py-12 grid gap-8 lg:grid-cols-12">

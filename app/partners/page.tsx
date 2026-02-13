@@ -33,6 +33,21 @@ const partnerReadiness = [
   "ต้องการขยายหลายโครงการโดยคุมคุณภาพได้",
 ];
 
+const fairPlayPrinciples = [
+  {
+    title: "Open Source Integrity",
+    body: "รักษาแกนแพลตฟอร์มแบบเปิดให้ตรวจสอบได้ และไม่เปลี่ยนขอบเขตแกนหลักโดยเอื้อรายใดรายหนึ่ง",
+  },
+  {
+    title: "Non-Intrusion Boundary",
+    body: "Gumon ไม่แข่งขันกับพาร์ตเนอร์ในงานส่งมอบปลายทาง และยึดบทบาทแพลตฟอร์มอย่างชัดเจน",
+  },
+  {
+    title: "Compatibility Standards",
+    body: "ส่วนขยายและบริการที่เชื่อมบนแพลตฟอร์มต้องยึดมาตรฐานกลางเพื่อรักษาคุณภาพร่วม",
+  },
+];
+
 const partnerNetwork = [
   { name: "Asia Connect Corporation", country: "Thailand", website: "https://www.asiaconnectth.com", logo: "/assets/partners/asia-connect.png" },
   { name: "AC Academys", country: "Thailand", website: "https://acacademys.com", logo: "/assets/partners/ac-academys.png" },
@@ -44,6 +59,21 @@ const trustSignals = [
   { label: "Partner Organizations", value: `${partnerNetwork.length}+` },
   { label: "Operating Countries", value: `${new Set(partnerNetwork.map((item) => item.country)).size}` },
   { label: "Enablement Channels", value: "Docs + Wiki" },
+];
+
+const collaborationOutcomes = [
+  {
+    title: "Public Sector Delivery",
+    problem: "ทีมส่งมอบหลายชุดใช้มาตรฐานต่างกัน ทำให้คุณภาพงานไม่คงที่",
+    approach: "จัด shared standards และรีวิวคุณภาพร่วมกับทีมแพลตฟอร์มก่อนปล่อยงาน",
+    outcome: "ยกระดับความสม่ำเสมอของงานส่งมอบระหว่างทีมพาร์ตเนอร์",
+  },
+  {
+    title: "Cross-Border Collaboration",
+    problem: "การทำงานข้ามประเทศทำให้การส่งต่อความรู้และเอกสารไม่ต่อเนื่อง",
+    approach: "ใช้ docs + knowledge base ชุดเดียวกันและตั้งรอบ sync กลาง",
+    outcome: "ลดงานซ้ำจากความเข้าใจไม่ตรงกันและเร่งการเริ่มงานรอบใหม่",
+  },
 ];
 
 export default function PartnersPage() {
@@ -80,6 +110,21 @@ export default function PartnersPage() {
               <li key={item}>- {item}</li>
             ))}
           </ul>
+        </div>
+
+        <div className="mt-12">
+          <p className="ui-kicker">Governance & Fair-Play</p>
+          <h2 className="mt-3 ui-h2">หลักการทำงานร่วมกันเพื่อรักษาความไว้วางใจใน ecosystem</h2>
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {fairPlayPrinciples.map((item, index) => (
+              <Reveal key={item.title} delay={index * 70}>
+                <div className="route-card h-full">
+                  <h3 className="ui-h3">{item.title}</h3>
+                  <p className="mt-2 text-sm text-mist leading-relaxed">{item.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
 
         <div className="mt-12 card p-7 shadow-soft">
@@ -130,6 +175,23 @@ export default function PartnersPage() {
           </div>
         </div>
 
+        <div className="mt-12 card p-7 shadow-soft">
+          <p className="ui-kicker">Mini Cases</p>
+          <h2 className="mt-3 ui-h2">ตัวอย่างผลลัพธ์จากการทำงานร่วมกันแบบ shared model</h2>
+          <div className="mt-6 grid gap-4 md:grid-cols-2">
+            {collaborationOutcomes.map((item, index) => (
+              <Reveal key={item.title} delay={index * 70}>
+                <div className="route-card h-full">
+                  <div className="text-xs tracking-[0.16em] uppercase text-mist">{item.title}</div>
+                  <p className="mt-3 text-sm text-mist leading-relaxed"><span className="text-ink">Problem:</span> {item.problem}</p>
+                  <p className="mt-2 text-sm text-mist leading-relaxed"><span className="text-ink">Approach:</span> {item.approach}</p>
+                  <p className="mt-2 text-sm text-mist leading-relaxed"><span className="text-ink">Outcome:</span> {item.outcome}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+
         <div className="mt-12 grid lg:grid-cols-12 gap-6">
           <div className="lg:col-span-7 card p-7 shadow-soft">
             <p className="ui-kicker">Partner Resources</p>
@@ -160,7 +222,7 @@ export default function PartnersPage() {
             <p className="ui-kicker">Next Step</p>
             <h2 className="mt-3 ui-h3">พร้อมเริ่มประเมินโอกาสร่วมงานแล้วหรือยัง</h2>
             <p className="mt-3 text-sm text-mist leading-relaxed">
-              ส่งบริบทอุตสาหกรรม, โครงสร้างทีม และเป้าหมายเชิงธุรกิจของคุณมาได้
+              ส่งข้อมูลอุตสาหกรรม, โครงสร้างทีม และเป้าหมายเชิงธุรกิจของคุณมาได้
               เพื่อให้ทีมช่วยวางแนวทางร่วมงานที่เหมาะสมได้ทันที.
             </p>
             <div className="mt-6 flex flex-col gap-3">

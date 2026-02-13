@@ -22,7 +22,7 @@ export default function NavLink({
       aria-current={isActive ? "page" : undefined}
       className={[
         "relative hover:text-ink transition-colors",
-        isActive ? "text-ink" : "text-mist",
+        isActive ? "text-ink" : "text-ink/78",
       ].join(" ")}
     >
       {label}

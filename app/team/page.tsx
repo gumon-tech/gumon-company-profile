@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import TrackedLink from "@/components/TrackedLink";
+import TeamDirectory from "@/components/TeamDirectory";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata = buildPageMetadata({
@@ -46,33 +46,14 @@ export default function TeamPage() {
           </p>
         </Reveal>
 
-        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-          {teamMembers.map((member, index) => (
-            <Reveal key={member.name} delay={index * 50}>
-              <article className="route-card h-full">
-                <div className="relative overflow-hidden rounded-xl border border-line/30 bg-bg1/60 aspect-square">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    sizes="(min-width: 1280px) 30vw, (min-width: 640px) 46vw, 100vw"
-                    className="object-cover"
-                    style={{ objectPosition: member.crop }}
-                  />
-                </div>
-                <h2 className="mt-4 ui-h3">{member.name}</h2>
-                <p className="mt-2 text-xs tracking-[0.14em] uppercase text-mist">{member.role}</p>
-              </article>
-            </Reveal>
-          ))}
-        </div>
+        <TeamDirectory members={teamMembers} />
 
         <div className="mt-12 card p-7 shadow-soft">
           <p className="ui-kicker">Next Step</p>
           <h2 className="mt-3 ui-h2">ต้องการคุยเรื่องการร่วมงานกับทีม Gumon</h2>
           <p className="mt-3 text-sm text-mist leading-relaxed max-w-3xl">
-            หากคุณต้องการหารือเรื่องการวาง platform roadmap, การส่งมอบผ่านพาร์ตเนอร์ หรือความร่วมมือเชิงเทคโนโลยี
-            สามารถส่งบริบทโครงการของคุณมาได้โดยตรง.
+            หากคุณต้องการหารือเรื่องการวางโรดแมปแพลตฟอร์ม การส่งมอบผ่านพาร์ตเนอร์ หรือความร่วมมือเชิงเทคโนโลยี
+            สามารถส่งข้อมูลโครงการของคุณมาได้โดยตรง.
           </p>
           <div className="mt-6 flex flex-col sm:flex-row gap-3">
             <TrackedLink href="/contact" className="btn-primary">

@@ -6,30 +6,30 @@ import { buildPageMetadata } from "@/lib/seo";
 export const metadata = buildPageMetadata({
   title: "Developers",
   description:
-    "เส้นทางสำหรับทีมพัฒนาที่ต้องการเริ่ม project บนมาตรฐานเดียวกันและปล่อยระบบได้เร็วขึ้น",
+    "เส้นทางสำหรับทีมพัฒนาที่ต้องการเริ่มโครงการบนมาตรฐานเดียวกันและปล่อยระบบได้เร็วขึ้น",
   path: "/developers",
 });
 
 const phases = [
   {
     title: "Bootstrap",
-    body: "เริ่มระบบจาก template มาตรฐาน, กำหนด config กลาง และ set baseline ของทีม",
+    body: "เริ่มระบบจากแม่แบบมาตรฐาน กำหนดค่ากลาง และวางมาตรฐานตั้งต้นของทีม",
   },
   {
     title: "Integrate",
-    body: "เชื่อม service ผ่าน contracts ที่ชัดเจน พร้อมตรวจคุณภาพก่อนรวมงาน",
+    body: "เชื่อมบริการผ่านสัญญาเชื่อมต่อที่ชัดเจน พร้อมตรวจคุณภาพก่อนรวมงาน",
   },
   {
     title: "Operate",
-    body: "ปล่อย release อย่างสม่ำเสมอ พร้อม monitoring และ feedback loop สำหรับรอบถัดไป",
+    body: "ปล่อยงานอย่างสม่ำเสมอ พร้อมระบบติดตามและวงจรข้อเสนอแนะสำหรับรอบถัดไป",
   },
 ];
 
 const technicalFocus = [
-  "ลดเวลา setup โครงการใหม่ด้วยมาตรฐานเดียวกันทั้งทีม",
+  "ลดเวลาเตรียมโครงการใหม่ด้วยมาตรฐานเดียวกันทั้งทีม",
   "ลดความเสี่ยงจากการเชื่อมต่อบริการที่ไม่สอดคล้องกัน",
-  "ทำ onboarding ทีมใหม่ได้เร็วขึ้นโดยไม่ต้องพึ่งความรู้เฉพาะบุคคล",
-  "ทำ release cadence ที่คาดการณ์ได้ในสภาพแวดล้อมจริง",
+  "ทำให้ทีมใหม่เริ่มงานได้เร็วขึ้นโดยไม่ต้องพึ่งความรู้เฉพาะบุคคล",
+  "สร้างรอบการปล่อยงานที่คาดการณ์ได้ในสภาพแวดล้อมจริง",
 ];
 
 export default function DevelopersPage() {
@@ -41,8 +41,8 @@ export default function DevelopersPage() {
           <p className="ui-kicker">Developers / Build Path</p>
           <h1 className="ui-h1">เส้นทางสำหรับทีมพัฒนาที่ต้องการสร้างระบบให้เร็วและคุมมาตรฐานได้ตั้งแต่ต้น</h1>
           <p className="mt-6 max-w-3xl ui-p">
-            หน้านี้รวมเส้นทางทำงานสำหรับทีม dev ที่ต้องการย้ายจากการเริ่มใหม่ทุกครั้ง
-            ไปสู่การพัฒนาบน baseline เดียวกันเพื่อให้ส่งมอบซ้ำได้จริง.
+            หน้านี้รวมเส้นทางทำงานสำหรับทีมพัฒนาที่ต้องการย้ายจากการเริ่มใหม่ทุกครั้ง
+            ไปสู่การพัฒนาบนมาตรฐานตั้งต้นเดียวกันเพื่อให้ส่งมอบซ้ำได้จริง.
           </p>
         </Reveal>
 
@@ -60,7 +60,7 @@ export default function DevelopersPage() {
 
         <div className="mt-12 card p-7 shadow-soft">
           <p className="ui-kicker">Engineering Focus</p>
-          <h2 className="mt-3 ui-h2">สิ่งที่ทีม dev ควรได้จากแพลตฟอร์ม</h2>
+          <h2 className="mt-3 ui-h2">สิ่งที่ทีมพัฒนาควรได้จากแพลตฟอร์ม</h2>
           <ul className="mt-5 grid gap-2 feature-list">
             {technicalFocus.map((item) => (
               <li key={item}>- {item}</li>
@@ -80,7 +80,7 @@ export default function DevelopersPage() {
                 className="route-card block"
               >
                 <h3 className="ui-h3">Developer Docs</h3>
-                <p className="mt-2 text-sm text-mist leading-relaxed">คู่มือ setup, commands และ technical reference</p>
+                <p className="mt-2 text-sm text-mist leading-relaxed">คู่มือเริ่มต้น คำสั่งสำคัญ และเอกสารอ้างอิงเชิงเทคนิค</p>
               </TrackedLink>
               <TrackedLink
                 href="https://wiki.gumon.io/"
@@ -89,7 +89,7 @@ export default function DevelopersPage() {
                 className="route-card block"
               >
                 <h3 className="ui-h3">Knowledge Base</h3>
-                <p className="mt-2 text-sm text-mist leading-relaxed">playbooks และแนวทางการแก้ปัญหาเชิงปฏิบัติการ</p>
+                <p className="mt-2 text-sm text-mist leading-relaxed">แนวปฏิบัติและแนวทางแก้ปัญหาเชิงปฏิบัติการ</p>
               </TrackedLink>
             </div>
           </div>
@@ -98,8 +98,8 @@ export default function DevelopersPage() {
             <p className="ui-kicker">Next Step</p>
             <h2 className="mt-3 ui-h3">ต้องการประเมินระบบเดิมก่อนเริ่มย้ายโครงสร้าง</h2>
             <p className="mt-3 text-sm text-mist leading-relaxed">
-              หากทีมมีระบบเดิมอยู่แล้วและต้องการวาง migration path แบบค่อยเป็นค่อยไป
-              สามารถส่งบริบทมาเพื่อประเมิน baseline ที่เหมาะสม.
+              หากทีมมีระบบเดิมอยู่แล้วและต้องการวางแผนย้ายระบบแบบค่อยเป็นค่อยไป
+              สามารถส่งข้อมูลระบบปัจจุบันมาเพื่อประเมินมาตรฐานตั้งต้นที่เหมาะสม.
             </p>
             <div className="mt-6 flex flex-col gap-3">
               <TrackedLink href="/platform" className="btn-secondary">

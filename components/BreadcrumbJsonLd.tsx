@@ -6,7 +6,7 @@ type Crumb = {
 };
 
 export default function BreadcrumbJsonLd({ items }: { items: Crumb[] }) {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://web.gumon.dev";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gumon.io";
   const normalizedBase = siteUrl.endsWith("/") ? siteUrl.slice(0, -1) : siteUrl;
 
   const allItems: Crumb[] = [{ name: "Home", path: "/" }, ...items];
