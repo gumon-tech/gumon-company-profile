@@ -7,46 +7,50 @@ import { buildPageMetadata } from "@/lib/seo";
 export const metadata = buildPageMetadata({
   title: "Home",
   description:
-    "Gumon Technology คือ Open Platform สำหรับองค์กรที่ต้องการเร่งความเร็วการส่งมอบ โดยคงมาตรฐานร่วมและขยายระบบได้อย่างมั่นคง",
+    "Gumon Technology คือ Open Source Platform สำหรับทีมที่ต้องการสร้างระบบแบบ microservices ให้เร็วขึ้น ปลอดภัยขึ้น และขยายได้จริง",
   path: "/",
 });
 
-const audiencePaths = [
+const signalPills = [
+  { label: "OPEN SOURCE", value: "Open Core" },
+  { label: "ARCHITECTURE", value: "3-Layer Platform" },
+  { label: "TOOLING", value: "Gumon CLI + Docs" },
+  { label: "DELIVERY", value: "Partner-Enabled" },
+];
+
+const foundationBlocks = [
   {
-    title: "Developers",
-    body: "เริ่มโครงการได้เร็วด้วยโครงสร้างมาตรฐาน, CLI, และแนวปฏิบัติที่พร้อมใช้จริง",
-    href: "/developers",
-    cta: "ดูเส้นทางนักพัฒนา",
+    title: "Application Layer",
+    body: "ออกแบบ workflow ของธุรกิจให้พัฒนาและปรับปรุงได้ต่อเนื่องโดยไม่กระทบทั้งระบบ",
   },
   {
-    title: "Partners",
-    body: "ต่อยอดงานส่งมอบเชิงพาณิชย์บนแพลตฟอร์มเดียวกัน โดยมีบทบาทและขอบเขตที่ชัดเจน",
-    href: "/partners",
-    cta: "ดูเส้นทางพาร์ตเนอร์",
+    title: "API Service Layer",
+    body: "จัดการ service contracts และการเชื่อมต่อข้ามทีมด้วยมาตรฐานเดียวกัน",
   },
   {
-    title: "Investors",
-    body: "ดูกรอบการเติบโตเชิงโครงสร้างและหลักการกำกับการขยายระยะกลางถึงระยะยาว",
-    href: "/investors",
-    cta: "ดูข้อมูลนักลงทุน",
+    title: "Data Stream Layer",
+    body: "รองรับ event/data pipeline สำหรับระบบที่ต้องการความเร็วและเสถียรภาพในการขยาย",
   },
 ];
 
-const solutionPillars = [
+const roleCards = [
   {
-    title: "Government",
-    body: "โซลูชันสำหรับหน่วยงานที่ต้องการมาตรฐานเชื่อมระบบและ governance ที่ตรวจสอบได้",
-    href: "/solutions/government",
+    title: "Developers",
+    body: "เริ่ม project จาก baseline เดียวกัน ใช้เวลา setup น้อยลง และปล่อยงานได้สม่ำเสมอ",
+    href: "/developers",
+    cta: "เข้าสู่ Developer Path",
   },
   {
-    title: "Healthcare",
-    body: "โซลูชันที่รองรับ workflow สุขภาพและการขยายบริการข้ามทีมอย่างเป็นระบบ",
-    href: "/solutions/healthcare",
+    title: "Partners",
+    body: "ต่อยอดเชิงพาณิชย์บนโครงสร้างเดียวกัน โดยมีบทบาทส่งมอบที่ชัดเจน",
+    href: "/partners",
+    cta: "เข้าสู่ Partner Path",
   },
   {
-    title: "Education & Enterprise",
-    body: "แนวทางยกระดับระบบเรียนรู้และ modernize ระบบองค์กรด้วยโครงสร้างที่ใช้ซ้ำได้",
-    href: "/solutions/education",
+    title: "Executives",
+    body: "ประเมินภาพรวมแพลตฟอร์ม ความพร้อมทีม และแนวทางนำไปใช้ในองค์กร",
+    href: "/company",
+    cta: "ดู Company Overview",
   },
 ];
 
@@ -63,77 +67,69 @@ export default function Page() {
       <BreadcrumbJsonLd items={[]} />
       <div className="ui-container">
         <Reveal>
-          <p className="ui-kicker">Open Platform for Real-World Delivery</p>
-          <h1 className="ui-h1">Open Platform ที่ช่วยองค์กรส่งมอบงานเทคโนโลยีได้เร็วขึ้นและขยายได้อย่างมั่นคง</h1>
+          <p className="ui-kicker">OPEN SOURCE PLATFORM FOR MODERN SYSTEM DELIVERY</p>
+          <h1 className="ui-h1">ลดความซับซ้อนของการสร้างระบบ ด้วยแพลตฟอร์มที่เริ่มไวและขยายได้จริง</h1>
           <p className="mt-6 max-w-3xl ui-p">
-            Gumon ผสาน Platform Foundation, Partner Delivery Model และระบบ Learning
-            เพื่อให้ทีมเทคนิคและทีมธุรกิจทำงานบนมาตรฐานเดียวกันตั้งแต่เริ่มโครงการจนถึงการขยายระบบ.
+            Gumon ช่วยวางรากฐานให้ทีมพัฒนาใช้มาตรฐานเดียวกันตั้งแต่วันแรก
+            ตั้งแต่การตั้งค่าโครงสร้าง การเชื่อมต่อบริการ จนถึงการส่งมอบในระดับที่ใช้งานจริง.
           </p>
         </Reveal>
 
-        <Reveal delay={90}>
+        <Reveal delay={80}>
           <div className="mt-8 flex flex-col sm:flex-row gap-3">
-            <TrackedLink href="/platform" eventName="home_primary_cta_click" category="cta" label="home-hero-platform" location="home.hero" className="btn-primary">เริ่มจากภาพรวมแพลตฟอร์ม</TrackedLink>
-            <TrackedLink href="/contact" eventName="home_secondary_cta_click" category="contact" label="home-hero-contact" location="home.hero" className="btn-secondary">คุยกับทีมงาน</TrackedLink>
+            <TrackedLink href="/platform" eventName="home_primary_cta_click" category="cta" label="home-hero-platform" location="home.hero" className="btn-primary">สำรวจ Platform Architecture</TrackedLink>
+            <TrackedLink href="/developers" eventName="home_secondary_cta_click" category="navigation" label="home-hero-developers" location="home.hero" className="btn-secondary">เริ่มเส้นทาง Developers</TrackedLink>
           </div>
         </Reveal>
 
-        <div className="mt-14 grid lg:grid-cols-12 gap-6">
-          <Reveal className="lg:col-span-8" delay={120}>
-            <div className="card p-7 shadow-soft h-full">
-              <p className="ui-kicker">Website Structure</p>
-              <h2 className="mt-3 ui-h2">Information Architecture ที่จัดใหม่ให้ค้นหาเร็วขึ้น</h2>
-              <div className="mt-5 grid sm:grid-cols-3 gap-4 text-sm">
-                <div className="card p-4">
-                  <div className="text-[11px] tracking-[0.18em] uppercase text-mist">Platform</div>
-                  <div className="mt-2">Overview, Ecosystem, Learning</div>
-                </div>
-                <div className="card p-4">
-                  <div className="text-[11px] tracking-[0.18em] uppercase text-mist">Audience</div>
-                  <div className="mt-2">Developers, Partners, Investors</div>
-                </div>
-                <div className="card p-4">
-                  <div className="text-[11px] tracking-[0.18em] uppercase text-mist">Solutions</div>
-                  <div className="mt-2">Government, Healthcare, Education, Enterprise</div>
-                </div>
+        <div className="mt-10 grid md:grid-cols-2 xl:grid-cols-4 gap-3">
+          {signalPills.map((pill, index) => (
+            <Reveal key={pill.label} delay={index * 60}>
+              <div className="glass rounded-xl border border-line/35 px-4 py-3">
+                <div className="text-[10px] tracking-[0.2em] uppercase text-mist">{pill.label}</div>
+                <div className="mt-2 text-sm font-semibold text-ink">{pill.value}</div>
               </div>
-            </div>
-          </Reveal>
+            </Reveal>
+          ))}
+        </div>
 
-          <Reveal className="lg:col-span-4" delay={180}>
-            <div className="card p-7 shadow-soft h-full">
-              <p className="ui-kicker">เริ่มจากเส้นทางที่ใช่</p>
-              <h2 className="mt-3 ui-h3">เลือกตามบทบาทของคุณ</h2>
-              <div className="mt-4 grid gap-2 text-sm">
-                <TrackedLink href="/developers" eventName="home_role_nav_click" category="navigation" label="role-developers" location="home.role-panel" className="text-mist hover:text-ink transition">Developers →</TrackedLink>
-                <TrackedLink href="/partners" eventName="home_role_nav_click" category="navigation" label="role-partners" location="home.role-panel" className="text-mist hover:text-ink transition">Partners →</TrackedLink>
-                <TrackedLink href="/investors" eventName="home_role_nav_click" category="navigation" label="role-investors" location="home.role-panel" className="text-mist hover:text-ink transition">Investors →</TrackedLink>
-                <TrackedLink href="/resources" eventName="home_role_nav_click" category="navigation" label="role-resources" location="home.role-panel" className="text-mist hover:text-ink transition">Resources →</TrackedLink>
-              </div>
-            </div>
+        <div className="mt-14 card p-7 shadow-soft">
+          <Reveal>
+            <p className="ui-kicker">Platform Foundation</p>
+            <h2 className="mt-3 ui-h2">สถาปัตยกรรม 3 ชั้นสำหรับทีมที่ต้องการส่งมอบอย่างมีวินัย</h2>
           </Reveal>
+          <div className="mt-6 grid md:grid-cols-3 gap-4">
+            {foundationBlocks.map((block, index) => (
+              <Reveal key={block.title} delay={index * 80}>
+                <div className="route-card h-full">
+                  <h3 className="ui-h3">{block.title}</h3>
+                  <p className="mt-2 text-sm text-mist leading-relaxed">{block.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
 
         <div className="mt-14">
           <Reveal>
-            <p className="ui-kicker">Audience Paths</p>
-            <h2 className="mt-3 ui-h2">เนื้อหาแยกตามบทบาทเพื่อให้ตัดสินใจได้เร็ว</h2>
+            <p className="ui-kicker">Role Paths</p>
+            <h2 className="mt-3 ui-h2">เลือกเส้นทางที่ตรงกับบทบาทของคุณ</h2>
           </Reveal>
           <div className="mt-6 grid md:grid-cols-3 gap-5">
-            {audiencePaths.map((path, index) => (
-              <Reveal key={path.title} delay={index * 80}>
+            {roleCards.map((card, index) => (
+              <Reveal key={card.title} delay={index * 80}>
                 <div className="route-card h-full">
-                  <h3 className="ui-h3">{path.title}</h3>
-                  <p className="mt-3 text-sm text-mist leading-relaxed">{path.body}</p>
+                  <h3 className="ui-h3">{card.title}</h3>
+                  <p className="mt-3 text-sm text-mist leading-relaxed">{card.body}</p>
                   <TrackedLink
-                    href={path.href}
+                    href={card.href}
                     eventName="home_audience_path_click"
                     category="cta"
-                    label={`audience-${path.title.toLowerCase()}`}
-                    location="home.audience-paths"
+                    label={`audience-${card.title.toLowerCase()}`}
+                    location="home.role-paths"
                     className="mt-5 inline-block text-sm text-ink underline underline-offset-4 decoration-accent hover:decoration-ink"
                   >
-                    {path.cta}
+                    {card.cta}
                   </TrackedLink>
                 </div>
               </Reveal>
@@ -142,36 +138,12 @@ export default function Page() {
         </div>
 
         <div className="mt-14 card p-7 shadow-soft">
-          <Reveal>
-            <p className="ui-kicker">Solutions</p>
-            <h2 className="mt-3 ui-h2">ตัวอย่างโซลูชันที่จัดตามบริบทธุรกิจ</h2>
-          </Reveal>
-          <div className="mt-6 grid md:grid-cols-3 gap-4">
-            {solutionPillars.map((pillar, index) => (
-              <Reveal key={pillar.title} delay={index * 80}>
-                <TrackedLink
-                  href={pillar.href}
-                  eventName="home_solution_card_click"
-                  category="navigation"
-                  label={`solution-${pillar.title.toLowerCase().replace(/\s+/g, "-")}`}
-                  location="home.solution-cards"
-                  className="route-card block h-full"
-                >
-                  <h3 className="ui-h3">{pillar.title}</h3>
-                  <p className="mt-2 text-sm text-mist leading-relaxed">{pillar.body}</p>
-                </TrackedLink>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-
-        <div className="mt-14 card p-7 shadow-soft">
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="ui-kicker">Trusted Network</p>
-              <h2 className="mt-2 ui-h2">เครือข่ายพาร์ตเนอร์ที่ร่วมส่งมอบกับ Gumon</h2>
+              <p className="ui-kicker">Trusted Partners</p>
+              <h2 className="mt-2 ui-h2">เครือข่ายพาร์ตเนอร์ที่ต่อยอดบนมาตรฐานเดียวกัน</h2>
             </div>
-            <TrackedLink href="/partners" eventName="home_partner_section_click" category="navigation" label="partner-section-detail" location="home.partner-section" className="btn-secondary w-fit">ดูรายละเอียดพาร์ตเนอร์</TrackedLink>
+            <TrackedLink href="/partners" eventName="home_partner_section_click" category="navigation" label="partner-section-detail" location="home.partner-section" className="btn-secondary w-fit">ดูแนวทางการร่วมงาน</TrackedLink>
           </div>
 
           <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -208,26 +180,19 @@ export default function Page() {
               </div>
             ))}
           </div>
-
-          <div className="mt-6">
-            <TrackedLink href="/solutions" eventName="home_solution_card_click" category="navigation" label="solution-hub" location="home.solution-cards" className="btn-secondary">
-              ดู Solutions Hub ทั้งหมด
-            </TrackedLink>
-          </div>
         </div>
 
         <Reveal delay={120}>
           <div className="mt-14 card p-7 shadow-soft">
             <p className="ui-kicker">Next Step</p>
-            <h2 className="mt-3 ui-h2">หากต้องการเริ่มใช้งานจริง ทีมพร้อมช่วยวางเส้นทาง</h2>
+            <h2 className="mt-3 ui-h2">พร้อมเริ่มโครงการหรือปรับโครงสร้างทีมแล้วหรือยัง</h2>
             <p className="mt-3 text-sm md:text-base text-mist leading-relaxed max-w-3xl">
-              ไม่ว่าคุณกำลังเริ่มโครงการใหม่ ขยายทีมพัฒนา หรือกำลังประเมินเชิงกลยุทธ์
-              เราช่วยจัดเส้นทางเริ่มต้นตามบริบทองค์กรให้ได้.
+              หากคุณต้องการวาง baseline ใหม่ให้ทีมพัฒนา หรือมองหาพาร์ตเนอร์สำหรับการส่งมอบจริง
+              ทีม Gumon สามารถช่วยวางเส้นทางเริ่มต้นที่เหมาะกับบริบทองค์กรของคุณ.
             </p>
             <div className="mt-6 flex flex-col sm:flex-row gap-3">
               <TrackedLink href="/contact" eventName="home_nextstep_click" category="contact" label="nextstep-contact" location="home.next-step" className="btn-primary">คุยกับทีม Gumon</TrackedLink>
-              <TrackedLink href="/resources" eventName="home_nextstep_click" category="navigation" label="nextstep-resources" location="home.next-step" className="btn-secondary">ดูทรัพยากรทั้งหมด</TrackedLink>
-              <TrackedLink href="/faq" eventName="home_nextstep_click" category="navigation" label="nextstep-faq" location="home.next-step" className="btn-secondary">ดูคำถามที่พบบ่อย</TrackedLink>
+              <TrackedLink href="/resources" eventName="home_nextstep_click" category="navigation" label="nextstep-resources" location="home.next-step" className="btn-secondary">เปิด Resource Hub</TrackedLink>
             </div>
           </div>
         </Reveal>

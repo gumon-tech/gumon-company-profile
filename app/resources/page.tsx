@@ -1,49 +1,49 @@
-import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
+import Link from "next/link";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata = buildPageMetadata({
   title: "Resources",
   description:
-    "ศูนย์รวมทรัพยากรสำหรับการตัดสินใจและการเริ่มใช้งาน Gumon ตามบทบาทที่แตกต่างกัน",
+    "ศูนย์รวมเอกสารและลิงก์สำคัญสำหรับทีมพัฒนา พาร์ตเนอร์ และผู้บริหารที่ต้องการใช้งาน Gumon อย่างเป็นระบบ",
   path: "/resources",
 });
 
 const resourceGroups = [
   {
-    title: "Technical",
+    title: "Developer Resources",
     items: [
-      ["Developer Documentation", "คู่มือเทคนิคและการเริ่มต้นใช้งาน", "https://docs.gumon.io/", true],
-      ["Knowledge Base", "แนวทางปฏิบัติการและบริบทการใช้งานจริง", "https://wiki.gumon.io/", true],
+      ["Developer Documentation", "คู่มือ setup, API reference และ command usage", "https://docs.gumon.io/", true],
+      ["Knowledge Base", "playbooks และแนวทางปฏิบัติการเชิงเทคนิค", "https://wiki.gumon.io/", true],
     ],
   },
   {
-    title: "Business",
+    title: "Business Resources",
     items: [
-      ["Partners", "แนวทางทำงานร่วมกันสำหรับทีมส่งมอบ", "/partners", false],
-      ["Investors", "ภาพรวมกรอบการเติบโตเชิงกลยุทธ์", "/investors", false],
+      ["Partner Collaboration", "แนวทางร่วมงานและขอบเขตการส่งมอบ", "/partners", false],
+      ["Company Overview", "หลักการองค์กรและ operating model", "/company", false],
     ],
   },
   {
-    title: "Company",
+    title: "Action",
     items: [
-      ["Company", "วิสัยทัศน์ บทบาท และแนวคิดการดำเนินงาน", "/company", false],
-      ["Contact", "ช่องทางติดต่อและการส่งต่อคำถามตามทีม", "/contact", false],
+      ["Platform Overview", "เริ่มเข้าใจสถาปัตยกรรมและองค์ประกอบหลัก", "/platform", false],
+      ["Contact Team", "ส่งโจทย์เพื่อเริ่มวางเส้นทางใช้งาน", "/contact", false],
     ],
   },
 ] as const;
 
-export default function Page() {
+export default function ResourcesPage() {
   return (
     <section className="ui-section">
       <BreadcrumbJsonLd items={[{ name: "Resources", path: "/resources" }]} />
       <div className="ui-container">
         <Reveal>
-          <p className="ui-kicker">Company / Resources</p>
-          <h1 className="ui-h1">Resource Hub สำหรับทุกบทบาทในระบบนิเวศ Gumon</h1>
+          <p className="ui-kicker">Resources / Hub</p>
+          <h1 className="ui-h1">ศูนย์รวมทรัพยากรที่ทีมใช้งานจริงบ่อยที่สุด</h1>
           <p className="mt-6 max-w-3xl ui-p">
-            รวมลิงก์และข้อมูลสำคัญที่ใช้งานจริงบ่อยที่สุด เพื่อให้ทีมเทคนิค ทีมส่งมอบ และผู้บริหาร เข้าถึงข้อมูลที่ต้องใช้ได้ทันที.
+            หน้านี้จัดกลุ่มข้อมูลตามวัตถุประสงค์การใช้งาน เพื่อลดเวลาค้นหาเอกสารและเส้นทางที่ควรเริ่มก่อน.
           </p>
         </Reveal>
 
@@ -55,13 +55,7 @@ export default function Page() {
                 <div className="mt-4 grid gap-3">
                   {group.items.map(([title, body, href, external]) =>
                     external ? (
-                      <a
-                        key={title}
-                        href={href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="route-card block"
-                      >
+                      <a key={title} href={href} target="_blank" rel="noreferrer" className="route-card block">
                         <h2 className="ui-h3">{title}</h2>
                         <p className="mt-2 text-sm text-mist leading-relaxed">{body}</p>
                       </a>
@@ -76,20 +70,6 @@ export default function Page() {
               </div>
             </Reveal>
           ))}
-        </div>
-
-        <div className="mt-12 card p-7 shadow-soft">
-          <p className="ui-kicker">Need Help</p>
-          <h2 className="mt-3 ui-h2">หากไม่แน่ใจว่าจะเริ่มจากหน้าไหน</h2>
-          <p className="mt-3 text-sm md:text-base text-mist leading-relaxed max-w-3xl">
-            เริ่มจากหน้า Audience ที่ตรงกับบทบาทของคุณ (Developers, Partners หรือ Investors)
-            แล้วระบบนำทางจะพาไปยังข้อมูลที่เหมาะที่สุด.
-          </p>
-          <div className="mt-6 flex flex-col sm:flex-row gap-3">
-            <Link href="/developers" className="btn-secondary">Developers</Link>
-            <Link href="/partners" className="btn-secondary">Partners</Link>
-            <Link href="/investors" className="btn-secondary">Investors</Link>
-          </div>
         </div>
       </div>
     </section>

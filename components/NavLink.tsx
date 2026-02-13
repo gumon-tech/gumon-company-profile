@@ -37,8 +37,9 @@ export default function NavLink({
     >
       {label}
       <span
+        style={{ backgroundColor: "rgb(var(--accent))" }}
         className={[
-          "absolute -bottom-3 left-0 h-[2px] w-full rounded-full bg-[var(--accent)] transition-opacity",
+          "absolute -bottom-3 left-0 h-[2px] w-full rounded-full transition-opacity",
           isActive ? "opacity-70" : "opacity-0",
         ].join(" ")}
       />

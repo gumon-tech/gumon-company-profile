@@ -1,56 +1,56 @@
-import Link from "next/link";
-import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
+import Link from "next/link";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata = buildPageMetadata({
   title: "Company",
   description:
-    "รู้จัก Gumon Technology ผ่านหลักการ Open-first, Partner-only และ Platform-first",
+    "รู้จัก Gumon Technology, หลักคิดขององค์กร และแนวทางขับเคลื่อนแพลตฟอร์ม Open Source สำหรับการส่งมอบในโลกจริง",
   path: "/company",
 });
 
-const companyPrinciples = [
+const principles = [
   {
-    title: "Open-first",
-    body: "ความสามารถแกนหลักต้องเข้าถึงได้ ตรวจสอบได้ และพัฒนาเพิ่มได้",
+    title: "Open Source by Default",
+    body: "แกนหลักของแพลตฟอร์มต้องเปิดและตรวจสอบได้ เพื่อให้ทีมใช้งานได้อย่างมั่นใจในระยะยาว",
   },
   {
-    title: "Partner-only",
-    body: "Gumon ไม่แข่งขันในงานส่งมอบปลายทางที่ทับซ้อนพาร์ตเนอร์",
+    title: "Platform over Projects",
+    body: "เราลงทุนกับโครงสร้างที่ใช้ซ้ำได้ ไม่เน้นแก้ปัญหาเฉพาะกิจรายโปรเจกต์",
   },
   {
-    title: "Platform-first",
-    body: "โฟกัสการลงทุนกับโครงสร้างระยะยาวที่เพิ่ม productivity ให้ทั้ง ecosystem",
+    title: "Partner-Driven Delivery",
+    body: "การส่งมอบปลายทางขับเคลื่อนโดยเครือข่ายพาร์ตเนอร์เพื่อ scale อย่างยั่งยืน",
   },
   {
-    title: "Readiness-driven",
-    body: "ขยายตามความพร้อมของแพลตฟอร์มและเครือข่าย ไม่เร่งเกิน capacity ที่รองรับ",
+    title: "Evidence-Led Execution",
+    body: "ทุกการปรับปรุงอ้างอิงจากข้อมูลหน้างาน, feedback และผลลัพธ์ที่วัดได้",
   },
 ];
 
-const highlights = [
-  { src: "/assets/field-impact/field-impact-01.jpg", tag: "Government", title: "Public Sector Collaboration" },
-  { src: "/assets/field-impact/field-impact-06.jpg", tag: "Education", title: "DKS Technical Program" },
-  { src: "/assets/field-impact/field-impact-11.jpg", tag: "Field Impact", title: "Healthcare On-site" },
+const operatingModel = [
+  "Platform Team: พัฒนา core architecture, standards และ tooling",
+  "Enablement System: ขับเคลื่อน docs, playbooks และองค์ความรู้สำหรับทีมใช้งาน",
+  "Partner Network: ส่งมอบเชิงพาณิชย์และขยายผลในตลาดจริง",
 ];
 
-export default function Page() {
+export default function CompanyPage() {
   return (
     <section className="ui-section">
       <BreadcrumbJsonLd items={[{ name: "Company", path: "/company" }]} />
       <div className="ui-container">
         <Reveal>
-          <p className="ui-kicker">Company / About</p>
-          <h1 className="ui-h1">Gumon Technology คือแพลตฟอร์มคอมพานีที่เติบโตผ่านเครือข่ายพาร์ตเนอร์</h1>
+          <p className="ui-kicker">Company / Overview</p>
+          <h1 className="ui-h1">Gumon Technology สร้างโครงสร้างพื้นฐานซอฟต์แวร์ที่ทีมใช้งานได้จริงในโลกหน้างาน</h1>
           <p className="mt-6 max-w-3xl ui-p">
-            เราออกแบบบทบาทองค์กรให้ชัดเจน เพื่อให้การพัฒนาเทคโนโลยี การส่งมอบเชิงพาณิชย์ และการยกระดับทักษะเดินไปด้วยกันอย่างยั่งยืน.
+            เราเป็นองค์กรเทคโนโลยีที่โฟกัส platform engineering และระบบมาตรฐานสำหรับการส่งมอบ
+            เพื่อให้ทีมพัฒนาและทีมธุรกิจเดินร่วมกันได้เร็วขึ้นบนโครงเดียวกัน.
           </p>
         </Reveal>
 
         <div className="mt-12 grid md:grid-cols-2 gap-5">
-          {companyPrinciples.map((item, index) => (
+          {principles.map((item, index) => (
             <Reveal key={item.title} delay={index * 70}>
               <div className="route-card h-full">
                 <p className="ui-kicker">Principle</p>
@@ -62,24 +62,16 @@ export default function Page() {
         </div>
 
         <div className="mt-12 card p-7 shadow-soft">
-          <p className="ui-kicker">Selected Highlights</p>
-          <h2 className="mt-3 ui-h2">ตัวอย่างบริบทงานที่ Gumon มีส่วนร่วมใน ecosystem</h2>
-          <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {highlights.map((item) => (
-              <figure key={item.src} className="card p-2 shadow-soft overflow-hidden">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-bg0/60 border border-line/20">
-                  <Image src={item.src} alt={item.title} fill className="h-full w-full object-cover" sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 90vw" />
-                </div>
-                <figcaption className="px-1 pt-3 pb-1">
-                  <div className="text-[11px] tracking-[0.2em] uppercase text-mist">{item.tag}</div>
-                  <div className="mt-1 text-sm font-medium leading-snug">{item.title}</div>
-                </figcaption>
-              </figure>
+          <p className="ui-kicker">Operating Model</p>
+          <h2 className="mt-3 ui-h2">วิธีทำงานขององค์กรที่ออกแบบมาเพื่อ scale</h2>
+          <ul className="mt-5 grid gap-2 feature-list">
+            {operatingModel.map((item) => (
+              <li key={item}>- {item}</li>
             ))}
-          </div>
+          </ul>
           <div className="mt-6 flex flex-col sm:flex-row gap-3">
-            <Link href="/team" className="btn-secondary">ดูทีมงาน</Link>
-            <Link href="/contact" className="btn-primary">คุยกับทีม Gumon</Link>
+            <Link href="/platform" className="btn-primary">ดู Platform</Link>
+            <Link href="/contact" className="btn-secondary">คุยกับทีม</Link>
           </div>
         </div>
       </div>

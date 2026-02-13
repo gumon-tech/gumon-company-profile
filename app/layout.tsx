@@ -41,43 +41,12 @@ export const metadata: Metadata = {
   },
 };
 
-const navGroups = [
-  {
-    label: "Platform",
-    items: [
-      { href: "/platform", label: "Overview" },
-      { href: "/ecosystem", label: "Ecosystem" },
-      { href: "/learning", label: "Learning" },
-    ],
-  },
-  {
-    label: "Solutions",
-    items: [
-      { href: "/solutions", label: "Solutions Hub" },
-    ],
-  },
-  {
-    label: "Audience",
-    items: [
-      { href: "/developers", label: "Developers" },
-      { href: "/partners", label: "Partners" },
-      { href: "/investors", label: "Investors" },
-    ],
-  },
-  {
-    label: "Company",
-    items: [
-      { href: "/company", label: "Company" },
-      { href: "/team", label: "Team" },
-    ],
-  },
-  {
-    label: "Resources",
-    items: [
-      { href: "/resources", label: "Resources" },
-      { href: "/faq", label: "FAQ" },
-    ],
-  },
+const navItems = [
+  { href: "/platform", label: "Platform" },
+  { href: "/developers", label: "Developers" },
+  { href: "/partners", label: "Partners" },
+  { href: "/resources", label: "Resources" },
+  { href: "/company", label: "Company" },
 ];
 
 const legalLinks = [
@@ -135,7 +104,7 @@ export default function RootLayout({
         <div className="bg-veil" />
         <div className="grid-overlay" />
 
-        <header className="sticky top-0 z-50 border-b border-line/20 backdrop-blur supports-[backdrop-filter]:bg-bg0/70">
+        <header className="sticky top-0 z-50 border-b border-line/30 backdrop-blur supports-[backdrop-filter]:bg-bg0/78">
           <div className="ui-container h-16 lg:h-[72px] flex items-center justify-between gap-3">
             <Link href="/" className="flex items-center gap-3">
               <span className="logo-swap" aria-label="Gumon mark">
@@ -146,21 +115,14 @@ export default function RootLayout({
               <div className="leading-tight">
                 <div className="text-sm font-semibold">Gumon Technology</div>
                 <div className="hidden lg:block text-[10px] tracking-[0.24em] uppercase text-mist">
-                  Open Platform For Delivery Teams
+                  Open Source Platform Systems
                 </div>
               </div>
             </Link>
 
-            <nav className="hidden xl:flex items-center gap-5 text-sm text-mist">
-              {navGroups.map((group) => (
-                <div key={group.label} className="flex items-center gap-3">
-                  <span className="text-[10px] tracking-[0.2em] uppercase text-mist/80">{group.label}</span>
-                  <div className="flex items-center gap-3">
-                    {group.items.map((item) => (
-                      <NavLink key={item.href} href={item.href} label={item.label} />
-                    ))}
-                  </div>
-                </div>
+            <nav className="hidden xl:flex items-center gap-4 text-sm text-mist">
+              {navItems.map((item) => (
+                <NavLink key={item.href} href={item.href} label={item.label} />
               ))}
             </nav>
 
@@ -170,25 +132,18 @@ export default function RootLayout({
               </summary>
               <div className="absolute right-0 top-[calc(100%+10px)] w-[290px] rounded-xl2 border border-line/25 bg-bg0/95 p-3 shadow-soft backdrop-blur-md">
                 <div className="grid gap-3 text-sm">
-                  {navGroups.map((group) => (
-                    <div key={group.label}>
-                      <div className="px-2 text-[10px] tracking-[0.2em] uppercase text-mist">{group.label}</div>
-                      <div className="mt-1 grid gap-1">
-                        {group.items.map((item) => (
-                          <TrackedLink
-                            key={item.href}
-                            href={item.href}
-                            eventName="site_nav_click"
-                            category="navigation"
-                            label={`mobile-${item.label.toLowerCase().replace(/\s+/g, "-")}`}
-                            location="header.nav.mobile"
-                            className="rounded-lg px-3 py-2 text-mist hover:text-ink hover:bg-bg1/60 transition"
-                          >
-                            {item.label}
-                          </TrackedLink>
-                        ))}
-                      </div>
-                    </div>
+                  {navItems.map((item) => (
+                    <TrackedLink
+                      key={item.href}
+                      href={item.href}
+                      eventName="site_nav_click"
+                      category="navigation"
+                      label={`mobile-${item.label.toLowerCase().replace(/\s+/g, "-")}`}
+                      location="header.nav.mobile"
+                      className="rounded-lg px-3 py-2 text-mist hover:text-ink hover:bg-bg1/60 transition"
+                    >
+                      {item.label}
+                    </TrackedLink>
                   ))}
                   <div className="hr" />
                   <TrackedLink href="/contact" eventName="header_cta_click" category="contact" label="mobile-contact" location="header.cta.mobile" className="btn-primary w-full">
@@ -223,19 +178,48 @@ export default function RootLayout({
               </p>
             </div>
 
-            <div className="lg:col-span-8 grid sm:grid-cols-2 lg:grid-cols-5 gap-6 text-sm">
-              {navGroups.map((group) => (
-                <div key={group.label}>
-                  <div className="text-[11px] tracking-[0.18em] uppercase text-mist">{group.label}</div>
-                  <div className="mt-3 grid gap-2">
-                    {group.items.map((item) => (
-                      <TrackedLink key={item.href} href={item.href} eventName="site_nav_click" category="navigation" label={`footer-${item.label.toLowerCase().replace(/\s+/g, "-")}`} location="footer.nav" className="text-mist hover:text-ink transition">
-                        {item.label}
-                      </TrackedLink>
-                    ))}
-                  </div>
+            <div className="lg:col-span-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-sm">
+              <div>
+                <div className="text-[11px] tracking-[0.18em] uppercase text-mist">Platform</div>
+                <div className="mt-3 grid gap-2">
+                  {navItems.slice(0, 2).map((item) => (
+                    <TrackedLink key={item.href} href={item.href} eventName="site_nav_click" category="navigation" label={`footer-${item.label.toLowerCase().replace(/\s+/g, "-")}`} location="footer.nav" className="text-mist hover:text-ink transition">
+                      {item.label}
+                    </TrackedLink>
+                  ))}
                 </div>
-              ))}
+              </div>
+              <div>
+                <div className="text-[11px] tracking-[0.18em] uppercase text-mist">Audience</div>
+                <div className="mt-3 grid gap-2">
+                  {navItems.slice(2, 3).map((item) => (
+                    <TrackedLink key={item.href} href={item.href} eventName="site_nav_click" category="navigation" label={`footer-${item.label.toLowerCase().replace(/\s+/g, "-")}`} location="footer.nav" className="text-mist hover:text-ink transition">
+                      {item.label}
+                    </TrackedLink>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <div className="text-[11px] tracking-[0.18em] uppercase text-mist">Company</div>
+                <div className="mt-3 grid gap-2">
+                  {navItems.slice(3).map((item) => (
+                    <TrackedLink key={item.href} href={item.href} eventName="site_nav_click" category="navigation" label={`footer-${item.label.toLowerCase().replace(/\s+/g, "-")}`} location="footer.nav" className="text-mist hover:text-ink transition">
+                      {item.label}
+                    </TrackedLink>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <div className="text-[11px] tracking-[0.18em] uppercase text-mist">Support</div>
+                <div className="mt-3 grid gap-2">
+                  <TrackedLink href="/faq" eventName="site_nav_click" category="navigation" label="footer-faq-top" location="footer.nav" className="text-mist hover:text-ink transition">
+                    FAQ
+                  </TrackedLink>
+                  <TrackedLink href="/contact" eventName="site_nav_click" category="navigation" label="footer-contact" location="footer.nav" className="text-mist hover:text-ink transition">
+                    Contact
+                  </TrackedLink>
+                </div>
+              </div>
             </div>
 
             <div className="lg:col-span-12 hr" />
