@@ -1,5 +1,6 @@
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import TrackedLink from "@/components/TrackedLink";
+import ContactLeadForm from "@/components/ContactLeadForm";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata = buildPageMetadata({
@@ -55,11 +56,13 @@ export default function ContactPage() {
 
         <div className="mt-12 grid lg:grid-cols-12 gap-6">
           <div className="lg:col-span-7 card p-7 shadow-soft">
-            <p className="ui-kicker">Knowledge Channels</p>
-            <h2 className="mt-3 ui-h2">เอกสารที่ควรอ่านก่อนประชุมเชิงเทคนิค</h2>
-            <div className="mt-6 flex flex-col sm:flex-row gap-3">
-              <TrackedLink href="https://docs.gumon.io/" eventName="contact_docs_click" category="docs" label="contact-docs" location="contact.knowledge" target="_blank" rel="noreferrer" className="btn-primary">Developer Documentation</TrackedLink>
-              <TrackedLink href="https://wiki.gumon.io/" eventName="contact_docs_click" category="docs" label="contact-knowledge-base" location="contact.knowledge" target="_blank" rel="noreferrer" className="btn-secondary">Knowledge Base</TrackedLink>
+            <p className="ui-kicker">Contact Form</p>
+            <h2 className="mt-3 ui-h2">ส่งบริบทโครงการเพื่อให้ทีมตอบได้ตรงประเด็น</h2>
+            <p className="mt-3 text-sm text-mist leading-relaxed">
+              สำหรับคำถามเชิงเทคนิคหรือการร่วมงาน แนะนำให้ส่งข้อมูลผ่านฟอร์มนี้เพื่อให้ทีมเตรียมการตอบกลับได้เร็วขึ้น.
+            </p>
+            <div className="mt-6">
+              <ContactLeadForm />
             </div>
           </div>
 
@@ -75,6 +78,14 @@ export default function ContactPage() {
                 <div className="text-[11px] tracking-[0.16em] uppercase text-mist">LinkedIn</div>
                 <div className="mt-1 text-ink">linkedin.com/company/gumon</div>
               </TrackedLink>
+            </div>
+
+            <div className="mt-6">
+              <p className="ui-kicker">Knowledge Channels</p>
+              <div className="mt-3 flex flex-col gap-3">
+                <TrackedLink href="https://docs.gumon.io/" eventName="contact_docs_click" category="docs" label="contact-docs" location="contact.knowledge" target="_blank" rel="noreferrer" className="btn-secondary">Developer Documentation</TrackedLink>
+                <TrackedLink href="https://wiki.gumon.io/" eventName="contact_docs_click" category="docs" label="contact-knowledge-base" location="contact.knowledge" target="_blank" rel="noreferrer" className="btn-secondary">Knowledge Base</TrackedLink>
+              </div>
             </div>
           </div>
         </div>
