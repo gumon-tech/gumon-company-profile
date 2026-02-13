@@ -19,6 +19,22 @@ Each page must answer:
 | `/contact` | All roles | Reach the right channel | Route inquiry by intent for fast response | Contact channels | Routing cards |
 | `/faq` | All roles | Resolve common questions | Practical answers and next steps | Contact page | Updated FAQ list |
 
+## Legacy Migration Pages (Noindex)
+- `/ecosystem`
+- `/learning`
+- `/investors`
+- `/solutions`
+- `/team`
+- `/solutions/government`
+- `/solutions/healthcare`
+- `/solutions/education`
+- `/solutions/enterprise`
+
+Purpose:
+- Preserve traffic from old links
+- Route users to new IA pages
+- Avoid SEO duplication with `noindex,follow`
+
 ## Content Rules
 - One page = one primary user decision
 - Headline must include concrete outcome

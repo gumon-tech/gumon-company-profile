@@ -28,13 +28,18 @@
 - `/terms`
 - `/cookies`
 
-### Removed from New Structure
+### Removed from New Structure (Primary IA)
 - `/ecosystem`
 - `/learning`
 - `/investors`
 - `/solutions`
 - `/team`
 - all `/solutions/*`
+
+### Legacy Migration Routes (Temporary)
+- Routes ข้างต้นยังเปิดเป็น `Legacy Route Notice` เพื่อรองรับลิงก์เก่า
+- ทุกหน้า legacy ตั้งค่า `robots: noindex, follow`
+- หน้าเหล่านี้ไม่อยู่ใน `sitemap.xml` และไม่ใช้ใน navigation ใหม่
 
 ## 3) Page Blueprint
 
