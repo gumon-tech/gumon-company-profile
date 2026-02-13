@@ -12,6 +12,8 @@ import MobileMenu from "@/components/MobileMenu";
 import BackToTopButton from "@/components/BackToTopButton";
 import AnalyticsBootstrap from "@/components/AnalyticsBootstrap";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import FooterTagline from "@/components/FooterTagline";
+import FooterLegalLine from "@/components/FooterLegalLine";
 import { companyInfo } from "@/lib/companyInfo";
 import { supportedLocales } from "@/lib/i18n";
 import {
@@ -189,7 +191,7 @@ export default function RootLayout({
                 Gumon Technology
               </TrackedLink>
               <p className="mt-3 text-sm text-mist leading-relaxed max-w-[32ch]">
-                Open platform for organizations that need faster technology delivery with standards that scale over time.
+                <FooterTagline />
               </p>
             </div>
 
@@ -266,7 +268,7 @@ export default function RootLayout({
                 </TrackedLink>
                 . All rights reserved.
                 <div className="mt-1">
-                  {companyInfo.legalName} | Registration No. {companyInfo.registrationNumber}
+                  <FooterLegalLine />
                 </div>
               </div>
               <div className="flex flex-wrap items-center gap-x-4 gap-y-2">

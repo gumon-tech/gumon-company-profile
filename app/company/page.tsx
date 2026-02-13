@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import TrackedLink from "@/components/TrackedLink";
-import { companyInfo } from "@/lib/companyInfo";
+import { getCompanyInfo } from "@/lib/companyInfo";
 import { buildPageMetadata } from "@/lib/seo";
 import { resolveLocale, type Locale } from "@/lib/i18n";
 import { pickLocalizedContent } from "@/lib/i18nContent";
@@ -25,6 +25,7 @@ export default async function CompanyPage({ params }: { params?: Promise<{ local
   const locale = await getLocale(params);
   const copy = pickLocalizedContent(locale, companyContent);
   const fallbackNotice = getFallbackNotice(locale);
+  const companyInfo = getCompanyInfo(locale);
 
   return (
     <section className="ui-section">

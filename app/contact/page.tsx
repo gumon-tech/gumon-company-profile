@@ -3,7 +3,7 @@ import Image from "next/image";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import TrackedLink from "@/components/TrackedLink";
 import EmailContactCard from "@/components/EmailContactCard";
-import { companyInfo } from "@/lib/companyInfo";
+import { getCompanyInfo } from "@/lib/companyInfo";
 import { buildPageMetadata } from "@/lib/seo";
 import { resolveLocale, type Locale } from "@/lib/i18n";
 import { pickLocalizedContent } from "@/lib/i18nContent";
@@ -26,6 +26,7 @@ export default async function ContactPage({ params }: { params?: Promise<{ local
   const locale = await getLocaleFromParams(params);
   const copy = pickLocalizedContent(locale, contactContent);
   const fallbackNotice = getFallbackNotice(locale);
+  const companyInfo = getCompanyInfo(locale);
 
   return (
     <section className="ui-section">

@@ -1,4 +1,4 @@
-import { companyInfo } from "@/lib/companyInfo";
+import { companyInfoByLocale } from "@/lib/companyInfo";
 import type { Locale } from "@/lib/i18n";
 
 export type Section = { title: string; body?: string; items?: string[] };
@@ -50,7 +50,7 @@ export const termsContent: Partial<Record<Locale, TermsCopy>> = {
       { title: "11. ความเชื่อมโยงกับนโยบายอื่น", items: ["การเก็บ ใช้ และเปิดเผยข้อมูลส่วนบุคคลอยู่ภายใต้นโยบายความเป็นส่วนตัว (Privacy Policy)", "การใช้คุกกี้และตัวเลือกความยินยอมอยู่ภายใต้นโยบายคุกกี้ (Cookie Notice)", "ในกรณีที่ข้อกำหนดนี้ขัดหรือแย้งกับนโยบายคุ้มครองข้อมูลส่วนบุคคล ให้ตีความร่วมกันตามกฎหมายที่เกี่ยวข้อง"] },
       { title: "12. กฎหมายที่ใช้บังคับ", body: "ข้อกำหนดนี้ให้ตีความและบังคับใช้ตามกฎหมายที่เกี่ยวข้องของประเทศไทย เว้นแต่กฎหมายบังคับในเขตอำนาจอื่นกำหนดไว้เป็นอย่างอื่น" },
       { title: "13. การเปลี่ยนแปลงข้อกำหนด", body: "เราอาจปรับปรุงข้อกำหนดนี้เป็นครั้งคราว โดยแสดงวันที่ปรับปรุงล่าสุดบนหน้านี้ การใช้งานต่อหลังการปรับปรุงถือว่าคุณยอมรับข้อกำหนดฉบับใหม่" },
-      { title: "14. ข้อมูลนิติบุคคลและช่องทางติดต่อ", items: [`ชื่อนิติบุคคล: ${companyInfo.legalName}`, `เลขทะเบียนนิติบุคคล: ${companyInfo.registrationNumber}`, `ที่อยู่: ${companyInfo.address}`, "ติดต่อทั่วไป: contact@gumon.io", "คำขอสิทธิข้อมูลส่วนบุคคล: data@gumon.io"] },
+      { title: "14. ข้อมูลนิติบุคคลและช่องทางติดต่อ", items: [`ชื่อนิติบุคคล: ${companyInfoByLocale.th.legalName}`, `เลขทะเบียนนิติบุคคล: ${companyInfoByLocale.th.registrationNumber}`, `ที่อยู่: ${companyInfoByLocale.th.address}`, "ติดต่อทั่วไป: contact@gumon.io", "คำขอสิทธิข้อมูลส่วนบุคคล: data@gumon.io"] },
     ],
   },
   en: {
@@ -75,7 +75,7 @@ export const termsContent: Partial<Record<Locale, TermsCopy>> = {
       { title: "11. Relation to Other Policies", items: ["Personal data processing is governed by our Privacy Policy.", "Cookie usage and consent options are governed by our Cookie Notice.", "If any conflict arises, these terms and data protection policies are interpreted together under applicable law."] },
       { title: "12. Governing Law", body: "These terms are governed by applicable laws of Thailand, unless mandatory laws in other jurisdictions require otherwise." },
       { title: "13. Changes to Terms", body: "We may update these terms from time to time and will display the latest update date on this page. Continued use indicates acceptance of updated terms." },
-      { title: "14. Legal Entity and Contact", items: [`Legal entity: ${companyInfo.legalName}`, `Registration number: ${companyInfo.registrationNumber}`, `Address: ${companyInfo.address}`, "General contact: contact@gumon.io", "Data rights requests: data@gumon.io"] },
+      { title: "14. Legal Entity and Contact", items: [`Legal entity: ${companyInfoByLocale.en.legalName}`, `Registration number: ${companyInfoByLocale.en.registrationNumber}`, `Address: ${companyInfoByLocale.en.address}`, "General contact: contact@gumon.io", "Data rights requests: data@gumon.io"] },
     ],
   },
 };

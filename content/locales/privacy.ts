@@ -1,4 +1,4 @@
-import { companyInfo } from "@/lib/companyInfo";
+import { companyInfoByLocale } from "@/lib/companyInfo";
 import type { Locale } from "@/lib/i18n";
 
 export type Section = {
@@ -77,7 +77,7 @@ export const privacyContent: Record<"th" | "en", PrivacyCopy> = {
         items: [
           "นโยบายนี้ครอบคลุมเฉพาะการใช้งานเว็บไซต์สาธารณะของ Gumon และหน้าที่เกี่ยวข้อง",
           "ไม่ครอบคลุมบริการภายนอกที่เชื่อมลิงก์ออกไป เช่นเว็บไซต์เอกสารหรือโซเชียลมีเดีย",
-          `ผู้ควบคุมข้อมูลส่วนบุคคลตามนโยบายนี้คือ ${companyInfo.legalName} (เลขทะเบียน ${companyInfo.registrationNumber})`,
+          `ผู้ควบคุมข้อมูลส่วนบุคคลตามนโยบายนี้คือ ${companyInfoByLocale.th.legalName} (เลขทะเบียน ${companyInfoByLocale.th.registrationNumber})`,
         ],
       },
       {
@@ -163,7 +163,7 @@ export const privacyContent: Record<"th" | "en", PrivacyCopy> = {
         items: [
           "คำถามด้านนโยบายและสิทธิข้อมูลส่วนบุคคล: data@gumon.io",
           "ทีมผู้ดูแลข้อมูล: Data Governance & Privacy Office",
-          `ชื่อและที่อยู่สำหรับการติดต่อ: ${companyInfo.legalName}, ${companyInfo.address}`,
+          `ชื่อและที่อยู่สำหรับการติดต่อ: ${companyInfoByLocale.th.legalName}, ${companyInfoByLocale.th.address}`,
         ],
       },
     ],
@@ -183,7 +183,7 @@ export const privacyContent: Record<"th" | "en", PrivacyCopy> = {
         items: [
           "This policy applies to Gumon public website usage and related pages.",
           "It does not cover third-party services linked from this website, such as external documentation or social media.",
-          `The data controller under this policy is ${companyInfo.legalName} (registration no. ${companyInfo.registrationNumber}).`,
+          `The data controller under this policy is ${companyInfoByLocale.en.legalName} (registration no. ${companyInfoByLocale.en.registrationNumber}).`,
         ],
       },
       {
@@ -269,10 +269,9 @@ export const privacyContent: Record<"th" | "en", PrivacyCopy> = {
         items: [
           "Privacy and data rights inquiries: data@gumon.io",
           "Responsible team: Data Governance & Privacy Office",
-          `Contact name and address: ${companyInfo.legalName}, ${companyInfo.address}`,
+          `Contact name and address: ${companyInfoByLocale.en.legalName}, ${companyInfoByLocale.en.address}`,
         ],
       },
     ],
   },
 };
-
