@@ -37,3 +37,12 @@ next-env.d.ts
 # Operating System Files
 .DS_Store
 Thumbs.db
+
+# Local temporary files
+.tmp/
+tmp_preview/
+
+# Raw/preview assets not used by site
+public/assets/field-impact/_originals/
+public/assets/from-gumon/*.original.png
+public/assets/from-gumon/*.pre_crop.png
