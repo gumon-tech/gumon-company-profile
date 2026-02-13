@@ -31,6 +31,14 @@ Source implementation:
 | `developers_platform_reference_click` | `navigation` | Developers -> Platform architecture | Technical depth exploration |
 | `partners_knowledge_base_click` | `docs` | Partners -> Knowledge Base | Partner enablement interest |
 | `partners_contact_click` | `contact` | Partners -> Contact | Partner lead intent |
+| `site_nav_click` | `navigation` | Header/Footer navigation click | Navigation pathway quality |
+| `header_cta_click` | `contact` | Header contact CTA click | Persistent contact intent |
+| `header_quicklink_click` | `docs` | Header docs/knowledge links | Documentation entry from global nav |
+| `solutions_card_click` | `navigation` | Solutions hub industry card click | Industry-level solution interest |
+| `solutions_related_click` | `navigation` | Solution detail -> related solution card | Cross-industry exploration depth |
+| `solutions_cta_click` | `contact/navigation` | Solutions hub next-step actions | Mid-funnel progression from solution discovery |
+| `solutions_detail_cta_click` | `contact/navigation` | Solution detail next-step actions | Bottom-funnel conversion intent by industry |
+| `footer_link_click` | `navigation/contact` | Footer legal/help/contact link click | Footer utility usage |
 
 ## KPI Dashboard Spec (Suggested)
 - Weekly role-path CTR from Home:
