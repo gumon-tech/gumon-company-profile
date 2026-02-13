@@ -7,7 +7,7 @@ import { buildPageMetadata } from "@/lib/seo";
 export const metadata = buildPageMetadata({
   title: "Home",
   description:
-    "Gumon Technology คือ Open Source Platform สำหรับทีมที่ต้องการสร้างระบบแบบ microservices ให้เร็วขึ้น ปลอดภัยขึ้น และขยายได้จริง",
+    "Gumon Technology คือ Open Platform สำหรับองค์กรที่ต้องการลดเวลาเริ่มต้นโครงการ คุมมาตรฐานการพัฒนา และส่งมอบระบบได้เร็วขึ้น",
   path: "/",
 });
 
@@ -61,6 +61,11 @@ const partners = [
   { name: "Taitam-D", country: "United Kingdom", website: "https://taitam-d.com", short: "TD", logo: "/assets/partners/taitam-d.png" },
 ];
 
+const trustStats = [
+  { label: "Partner Organizations", value: `${partners.length}+` },
+  { label: "Operating Countries", value: `${new Set(partners.map((item) => item.country)).size}` },
+];
+
 export default function Page() {
   return (
     <section className="ui-section">
@@ -68,17 +73,17 @@ export default function Page() {
       <div className="ui-container">
         <Reveal>
           <p className="ui-kicker">OPEN SOURCE PLATFORM FOR MODERN SYSTEM DELIVERY</p>
-          <h1 className="ui-h1">ลดความซับซ้อนของการสร้างระบบ ด้วยแพลตฟอร์มที่เริ่มไวและขยายได้จริง</h1>
+          <h1 className="ui-h1">ลดเวลาเริ่มต้นโครงการและส่งมอบได้เร็วขึ้น ด้วยแพลตฟอร์มมาตรฐานเดียวกันทั้งองค์กร</h1>
           <p className="mt-6 max-w-3xl ui-p">
-            Gumon ช่วยวางรากฐานให้ทีมพัฒนาใช้มาตรฐานเดียวกันตั้งแต่วันแรก
-            ตั้งแต่การตั้งค่าโครงสร้าง การเชื่อมต่อบริการ จนถึงการส่งมอบในระดับที่ใช้งานจริง.
+            Gumon ช่วยเปลี่ยนการพัฒนาแบบต่างคนต่างทำ ให้กลายเป็นระบบที่ใช้ซ้ำได้จริง
+            ตั้งแต่ baseline โครงสร้าง, service contracts ไปจนถึงการส่งมอบที่คาดการณ์ได้.
           </p>
         </Reveal>
 
         <Reveal delay={80}>
           <div className="mt-8 flex flex-col sm:flex-row gap-3">
-            <TrackedLink href="/platform" className="btn-primary">สำรวจ Platform Architecture</TrackedLink>
-            <TrackedLink href="/developers" className="btn-secondary">เริ่มเส้นทาง Developers</TrackedLink>
+            <TrackedLink href="/platform" className="btn-primary">ดูโครงสร้าง Platform</TrackedLink>
+            <TrackedLink href="/contact" className="btn-secondary">คุยโจทย์กับทีม Gumon</TrackedLink>
           </div>
         </Reveal>
 
@@ -113,7 +118,7 @@ export default function Page() {
         <div className="mt-14">
           <Reveal>
             <p className="ui-kicker">Role Paths</p>
-            <h2 className="mt-3 ui-h2">เลือกเส้นทางที่ตรงกับบทบาทของคุณ</h2>
+            <h2 className="mt-3 ui-h2">เลือกเส้นทางเริ่มต้นตามบทบาท เพื่อเดินงานได้เร็วตั้งแต่สัปดาห์แรก</h2>
           </Reveal>
           <div className="mt-6 grid md:grid-cols-3 gap-5">
             {roleCards.map((card, index) => (
@@ -137,7 +142,7 @@ export default function Page() {
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="ui-kicker">Trusted Partners</p>
-              <h2 className="mt-2 ui-h2">เครือข่ายพาร์ตเนอร์ที่ต่อยอดบนมาตรฐานเดียวกัน</h2>
+              <h2 className="mt-2 ui-h2">เครือข่ายพาร์ตเนอร์ที่ส่งมอบงานจริงบนมาตรฐานเดียวกัน</h2>
             </div>
             <TrackedLink href="/partners" className="btn-secondary w-fit">ดูแนวทางการร่วมงาน</TrackedLink>
           </div>
@@ -172,19 +177,27 @@ export default function Page() {
               </div>
             ))}
           </div>
+
+          <div className="mt-6 flex flex-wrap gap-3">
+            {trustStats.map((item) => (
+              <div key={item.label} className="glass rounded-lg border border-line/35 px-3 py-2 text-xs text-mist">
+                <span className="text-ink font-semibold">{item.value}</span> {item.label}
+              </div>
+            ))}
+          </div>
         </div>
 
         <Reveal delay={120}>
           <div className="mt-14 card p-7 shadow-soft">
             <p className="ui-kicker">Next Step</p>
-            <h2 className="mt-3 ui-h2">พร้อมเริ่มโครงการหรือปรับโครงสร้างทีมแล้วหรือยัง</h2>
+            <h2 className="mt-3 ui-h2">ต้องการ roadmap ที่เริ่มได้จริงภายในรอบการทำงานถัดไป</h2>
             <p className="mt-3 text-sm md:text-base text-mist leading-relaxed max-w-3xl">
-              หากคุณต้องการวาง baseline ใหม่ให้ทีมพัฒนา หรือมองหาพาร์ตเนอร์สำหรับการส่งมอบจริง
-              ทีม Gumon สามารถช่วยวางเส้นทางเริ่มต้นที่เหมาะกับบริบทองค์กรของคุณ.
+              ส่งบริบททีมและระบบปัจจุบันของคุณมาได้เลย แล้วเราจะช่วยกำหนดเส้นทางเริ่มต้นที่เหมาะสม
+              ทั้งด้านโครงสร้างเทคโนโลยีและรูปแบบการส่งมอบ.
             </p>
             <div className="mt-6 flex flex-col sm:flex-row gap-3">
-              <TrackedLink href="/contact" className="btn-primary">คุยกับทีม Gumon</TrackedLink>
-              <TrackedLink href="/resources" className="btn-secondary">เปิด Resource Hub</TrackedLink>
+              <TrackedLink href="/contact" className="btn-primary">ขอนัดคุย 30 นาที</TrackedLink>
+              <TrackedLink href="/resources" className="btn-secondary">ดูเอกสารประกอบการตัดสินใจ</TrackedLink>
             </div>
           </div>
         </Reveal>

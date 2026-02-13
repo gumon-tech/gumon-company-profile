@@ -1,6 +1,7 @@
 import Reveal from "@/components/Reveal";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import TrackedLink from "@/components/TrackedLink";
+import Image from "next/image";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata = buildPageMetadata({
@@ -30,6 +31,19 @@ const partnerReadiness = [
   "มีความสามารถด้าน solution architecture และ implementation",
   "พร้อมทำงานบน shared standards และ quality gates",
   "ต้องการขยายหลายโครงการโดยคุมคุณภาพได้",
+];
+
+const partnerNetwork = [
+  { name: "Asia Connect Corporation", country: "Thailand", website: "https://www.asiaconnectth.com", logo: "/assets/partners/asia-connect.png" },
+  { name: "AC Academys", country: "Thailand", website: "https://acacademys.com", logo: "/assets/partners/ac-academys.png" },
+  { name: "Olufy-X", country: "Thailand", website: "https://olufy.com", logo: "/assets/partners/olufy-x.png" },
+  { name: "Taitam-D", country: "United Kingdom", website: "https://taitam-d.com", logo: "/assets/partners/taitam-d.png" },
+];
+
+const trustSignals = [
+  { label: "Partner Organizations", value: `${partnerNetwork.length}+` },
+  { label: "Operating Countries", value: `${new Set(partnerNetwork.map((item) => item.country)).size}` },
+  { label: "Enablement Channels", value: "Docs + Wiki" },
 ];
 
 export default function PartnersPage() {
@@ -66,6 +80,54 @@ export default function PartnersPage() {
               <li key={item}>- {item}</li>
             ))}
           </ul>
+        </div>
+
+        <div className="mt-12 card p-7 shadow-soft">
+          <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="ui-kicker">Trust Proof</p>
+              <h2 className="mt-2 ui-h2">เครือข่ายที่ใช้งานมาตรฐานเดียวกันในงานส่งมอบจริง</h2>
+            </div>
+            <TrackedLink href="/company" className="btn-secondary w-fit">
+              ดูภาพรวมองค์กร
+            </TrackedLink>
+          </div>
+
+          <div className="mt-6 grid md:grid-cols-3 gap-3">
+            {trustSignals.map((item) => (
+              <div key={item.label} className="glass rounded-xl border border-line/35 px-4 py-4">
+                <div className="text-[10px] tracking-[0.18em] uppercase text-mist">{item.label}</div>
+                <div className="mt-2 text-xl font-semibold text-ink">{item.value}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {partnerNetwork.map((partner) => (
+              <div key={partner.name} className="partner-item">
+                <div className="partner-logo-wrap">
+                  <Image
+                    src={partner.logo}
+                    alt={`${partner.name} logo`}
+                    width={112}
+                    height={40}
+                    className="partner-logo"
+                  />
+                </div>
+                <div>
+                  <TrackedLink
+                    href={partner.website}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-sm font-medium leading-snug underline underline-offset-4 decoration-accent hover:decoration-ink transition"
+                  >
+                    {partner.name}
+                  </TrackedLink>
+                  <div className="text-xs text-mist mt-0.5">{partner.country}</div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="mt-12 grid lg:grid-cols-12 gap-6">
