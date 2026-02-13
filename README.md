@@ -16,6 +16,12 @@ npm run build
 # output: /out
 ```
 
+## IA guard check
+```bash
+npm run check:ia
+```
+ตรวจว่าหน้า active ไม่มีลิงก์ภายในย้อนกลับไปหน้า legacy routes
+
 ## Current IA
 - `/`
 - `/platform`
