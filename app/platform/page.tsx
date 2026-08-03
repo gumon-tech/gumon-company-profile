@@ -9,6 +9,7 @@ import { fallbackLocale, resolveLocale, type Locale } from "@/lib/i18n";
 import { pickLocalizedContent } from "@/lib/i18nContent";
 import { getFallbackNotice } from "@/content/locales/fallbackNotice";
 import { platformContent, platformMeta } from "@/content/locales/platform";
+import { platformHighLevelContent } from "@/content/locales/platformHighLevel";
 
 async function getLocaleFromParams(params?: Promise<{ locale?: string }>): Promise<Locale> {
   if (!params) return fallbackLocale;
@@ -25,6 +26,7 @@ export async function generateMetadata({ params }: { params?: Promise<{ locale?:
 export default async function PlatformPage({ params }: { params?: Promise<{ locale?: string }> }) {
   const locale = await getLocaleFromParams(params);
   const copy = pickLocalizedContent(locale, platformContent);
+  const highLevel = pickLocalizedContent(locale, platformHighLevelContent);
   const fallbackNotice = platformContent[locale] ? null : getFallbackNotice(locale);
 
   return (
@@ -105,6 +107,62 @@ export default async function PlatformPage({ params }: { params?: Promise<{ loca
               <TrackedLink href="/contact" className="btn-secondary">{copy.contactCta}</TrackedLink>
             </div>
           </div>
+        </div>
+
+        <div className="mt-16">
+          <Reveal>
+            <p className="ui-kicker">{highLevel.kicker}</p>
+            <h2 className="mt-3 ui-h2">{highLevel.heading}</h2>
+            <p className="mt-4 max-w-3xl ui-p">{highLevel.intro}</p>
+          </Reveal>
+
+          <div className="mt-8 grid gap-5 lg:grid-cols-3 lg:items-stretch">
+            {highLevel.layers.map((layer, index) => (
+              <Reveal key={layer.title} delay={index * 70} className="h-full">
+                <div className="card p-6 shadow-soft h-full flex flex-col">
+                  <p className="ui-kicker">{layer.zone}</p>
+                  <h3 className="mt-3 ui-h3">{layer.title}</h3>
+                  <p className="mt-1 text-xs md:text-sm text-mist">{layer.subtitle}</p>
+                  <p className="mt-3 text-sm text-mist leading-relaxed">{layer.purpose}</p>
+
+                  <p className="mt-5 ui-kicker">{highLevel.contentsLabel}</p>
+                  <ul className="mt-3 grid gap-2 feature-list">
+                    {layer.items.map((item) => (
+                      <li key={item}>- {item}</li>
+                    ))}
+                  </ul>
+
+                  <div className="mt-auto pt-5">
+                    <p className="ui-kicker">{highLevel.outcomeLabel}</p>
+                    <p className="mt-2 text-sm text-mist leading-relaxed">{layer.outcome}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal>
+            <h3 className="mt-12 ui-h3">{highLevel.crossHeading}</h3>
+          </Reveal>
+          <div className="mt-5 grid gap-5 md:grid-cols-3">
+            {highLevel.cross.map((item, index) => (
+              <Reveal key={item.title} delay={index * 70} className="h-full">
+                <div className="route-card h-full">
+                  <h4 className="ui-h3">{item.title}</h4>
+                  <p className="mt-2 text-sm text-mist leading-relaxed">{item.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal>
+            <div className="mt-8 card p-7 shadow-soft">
+              <p className="ui-kicker">{highLevel.promiseLabel}</p>
+              <p className="mt-3 max-w-3xl ui-p">{highLevel.promiseBody}</p>
+            </div>
+          </Reveal>
+
+          <p className="mt-6 max-w-3xl text-xs md:text-sm text-mist leading-relaxed">{highLevel.footnote}</p>
         </div>
       </div>
     </section>
