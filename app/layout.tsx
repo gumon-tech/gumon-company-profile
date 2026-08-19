@@ -156,10 +156,10 @@ export default function RootLayout({
         taxID: companyInfo.registrationNumber,
         address: {
           "@type": "PostalAddress",
-          streetAddress: "33/4 Moo 11, The Nine Towers, Tower A, Floor 35, Rama 9 Road",
-          addressLocality: "Huai Khwang",
-          addressRegion: "Bangkok",
-          postalCode: "10310",
+          streetAddress: "10/17 Moo 1, Bang Chalong",
+          addressLocality: "Bang Phli",
+          addressRegion: "Samut Prakan",
+          postalCode: "10540",
           addressCountry: "TH",
         },
         sameAs: [
